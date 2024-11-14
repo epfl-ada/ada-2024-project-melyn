@@ -26,7 +26,7 @@ def categorize_release_season(date):
 def extract_info(infos_str):
     """Extracts country names from the 'Movie countries (Freebase ID:name tuples)' column."""
     try:
-        return [info.split(":")[1].strip(" }") for info in infoq_str.split(",")]
+        return [info.split(":")[1].strip(" }") for info in infos_str.split(",")]
     except Exception:
         return []
 
