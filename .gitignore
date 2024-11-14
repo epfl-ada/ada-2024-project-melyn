@@ -1,0 +1,5 @@
+# Ignore les fichiers de pickle volumineux
+data/pickle/
+
+# Ignore les checkpoints des notebooks
+data/IMDb/.ipynb_checkpoints/
