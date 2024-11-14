@@ -28,9 +28,7 @@ In particular, the CMU Movies dataset aids in addressing questions about the imp
 
 - Additional :
 - IMDb dataset : The IMDb dataset provides valuable ratings and voting data that can serve as an alternative metric for measuring a movie's success, beyond traditional metrics like box office revenue. By using IMDb ratings (average viewer scores out of 10) and the number of votes a movie has received, we can develop a “popularity” metric that reflects audience reception and engagement, which can highlight successful films that may not have been financial hits but were well-received by viewers.
-
 When using IMDb data for such analyses, a key challenge is integrating it with other datasets, like the EMU movies dataset. For instance, differences in naming conventions, movie release years, and sometimes even mismatches in genre categories mean that titles may not match directly. Additionally, IMDb titles may have alternate versions or regional variations, so we have to carefully align these records to prevent duplicating or missing films during merging. The title.basics and title.ratings tables provide most of the rating information, but filtering and cleaning this data, such as removing duplicate titles or aligning names, can be time-consuming.
-
 Despite these constraints, with robust preprocessing, the IMDb ratings data allows us to examine audience-based success and trends that complement or even differ from revenue-focused metrics, offering a broader perspective on a movie's impact.
 
 - Wikidata Ca a voir vraiment Grosse hésitation mais grosse flemme aussi.
