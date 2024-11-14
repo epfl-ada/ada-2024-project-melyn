@@ -8,7 +8,7 @@ Your README.md should contain:
 - Organization within the team: A list of internal milestones up until project Milestone P3.
 - Questions for TAs (optional): Add here any questions you have for us related to the proposed project.
 
-# Abstract :
+## Abstract :
 This project analyzes the key factors influencing box-office success for films released between 1914 and 2016, seeking to understand how audience preferences and industry trends have evolved over time. We focus on a variety of characteristics—such as genre, release timing, localization (number of translations), and lead actors' age and gender—to determine their impact on a film's revenue. By examining six distinct historical periods, we aim to uncover how shifts in these characteristics correlate with box-office performance. Additionally, we explore genre combinations and actor age pairings to see if certain patterns consistently align with higher revenue. We also assess how localization strategies, like translations into specific languages, have helped films reach a wider audience. This study provides a comprehensive view of the changing dynamics of film success, revealing patterns that reflect both cinematic trends and evolving audience preferences across decades
 
 # Research Questions : 
