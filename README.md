@@ -41,21 +41,22 @@ The goal is to get a better understanding of the behaviour of each characteristi
 We look at how different attributes interact with each other. For example, we can examine correlations between factors such as movie ratings and box office earnings, or how the genre of a movie affects its overall reception (e.g., ratings, number of reviews).
 To achieve this, we use methods like correlation analysis, cross-tabulations, and pair plots to detect significant relationships in the data. This step helps to identify the most important variables that influence the success or failure of a movie and allows us to focus on these patterns for the story we want to tell.
 
-Step 4: Advanced Data Analysis & Modeling
+- Step 4: Advanced Data Analysis & Modeling
 We dive deeper into more advanced analyses by using a predictive modeling to estimate the potential box office earnings of a movie based on its genre, cast, and other features. Machine learning algorithms like linear regression, decision trees, or clustering could be used to segment movies based on their features and predict performance metrics. This step is about turning our observations into actionable insights. If we were to predict future trends in the movie industry or determine which characteristics are most likely to result in success, this is where we would apply more sophisticated models.
 
-Step 5: Building the Data Story and Visualization
+- Step 5: Building the Data Story and Visualization
 
 ## Proposed timeline
 - 15.11.2024 : Step 1 & 2
-- (29.11.2024 : Homework 2)
+
+*(29.11.2024 : Homework 2)*
 - 06.12.2024 : Step 3
 - 13.12.2024 : Step 4
 - 20.12.2024 (Deadline Milestone 3) : Step 5
 
 ## Team Organization :
-- Elyes: Step 1 & 3 
-- Najmedinne: Step 1, 2 & 4
-- Lucas: Step 1 & 3 
-- Myriam: Step 1, 2 & 4
-- Yassine: Step 1, 2 & 3
+- Elyes Trabelsi: Step 1 & 3 
+- Najmeddine Abbassi: Step 1, 2 & 4
+- Lucas Simonnet: Step 1 & 3 
+- Annaelle Benlamri: Step 1, 2 & 4
+- Yassine Mamlouk: Step 1, 2 & 3
