@@ -31,20 +31,20 @@ Despite these constraints, with robust preprocessing, the IMDb ratings data allo
 - Linear Regression: We will use this technique to model the relationship between box-office revenue or average rating (dependents variables) and multiple independent variables, such as genre, actor age and gender, localization, and release timing. By fitting a linear equation, linear regression allows you to predict a film's revenue or rating based on its characteristics, providing insights into how different factors work together to drive commercial and critical success.
 
 ## Project Plan :
-- Step 1: Data Pre-Processing and cleaning
+- **Step 1:** Data Pre-Processing and cleaning
 In this step, we focus on preparing the data for analysis. This involves cleaning the datasets by removing missing values, duplicates, or inconsistencies that could skew the results. We also standardize data formats, such as dates, names, or categories, to ensure consistency and make the data easier to work with. The goal is to make the data ready for exploration and analysis, ensuring its quality and reliability. This process is crucial to ensure that the analysis that follows is built on solid foundations, leading to accurate and trustworthy conclusions.
 
-- Step 2: Analyzing and plotting characteristics individually
+- **Step 2:** Analyzing and plotting characteristics individually
 The goal is to get a better understanding of the behaviour of each characteristics across the periods. We examine the movie's features, such as their genres, release years, ratings or box office performance (same for the actor's features such as age and gender). We analyze the distribution of these features and visualize them using various plots, such as histograms, bar charts, or scatter plots. This helps us to identify patterns, trends, or outliers in the data. By focusing on each characteristic separately, we gain insights into how different movie attributes behave, laying the groundwork for more complex analysis later on.
 
-- Step 3: Identifying Key Relationships and Patterns
+- **Step 3:** Identifying Key Relationships and Patterns
 We look at how different attributes interact with each other. For example, we can examine correlations between factors such as movie ratings and box office earnings, or how the genre of a movie affects its overall reception (e.g., ratings, number of reviews).
 To achieve this, we use methods like correlation analysis, cross-tabulations, and pair plots to detect significant relationships in the data. This step helps to identify the most important variables that influence the success or failure of a movie and allows us to focus on these patterns for the story we want to tell.
 
-- Step 4: Advanced Data Analysis & Modeling
+- **Step 4:** Advanced Data Analysis & Modeling
 We dive deeper into more advanced analyses by using a predictive modeling to estimate the potential box office earnings of a movie based on its genre, cast, and other features. Machine learning algorithms like linear regression, decision trees, or clustering could be used to segment movies based on their features and predict performance metrics. This step is about turning our observations into actionable insights. If we were to predict future trends in the movie industry or determine which characteristics are most likely to result in success, this is where we would apply more sophisticated models.
 
-- Step 5: Building the Data Story and Visualization
+- **Step 5:** Building the Data Story and Visualization
 
 ## Proposed timeline
 - 15.11.2024 : Step 1 & 2
