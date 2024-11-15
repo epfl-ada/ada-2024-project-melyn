@@ -95,7 +95,6 @@ def top_n_by_interval(feature, data, n=10, revenue=False):
 
     ax = plot_data.plot(kind='bar', stacked=True, figsize=(8, 5), colormap='tab10')
     ax.set_xlabel('Year Interval')
-    ax.set_ylabel(f'Percentage of {feature}')
     title_revenue = 'Average Box Office Revenue' if revenue else 'Occurrences'
     ax.set_title(f'Top {n} {feature} by {title_revenue} by 20-Year Intervals (1915-2015)')
     ax.legend(title=f'{feature}', bbox_to_anchor=(1.05, 1), loc='upper left')
@@ -121,6 +120,27 @@ def top_n_total_revenue(feature, data, n=10):
     ax.set_xlabel(feature)
     ax.set_ylabel('Average Box Office Revenue')
     ax.set_title(f'Top {n} {feature} by Average Box Office Revenue (1915-2015)')
+    plt.tight_layout()
+    
+    return ax
+
+def top_n_average_rating(feature, data, n=10):
+    """
+    Plots the top n features by average rating for the entire period.
+    Args:
+        feature (str): The feature to be analyzed.
+        df (DataFrame): The prepared DataFrame with top n features.
+        n (int): The number of top features to be considered.
+    Returns:
+        ax: The plot of the top n features by average rating.
+    """
+    df = prepare_top_n_data(feature, data, n)
+    avg_revenue_by_genre = df.groupby(feature,observed=False)['averageRating'].mean().nlargest(n)
+    
+    ax = avg_revenue_by_genre.plot(kind='bar', figsize=(8, 5), colormap='tab10')
+    ax.set_xlabel(feature)
+    ax.set_ylabel('Average IMDb Rating')
+    ax.set_title(f'Top {n} {feature} by Average IMDb Rating (1915-2015)')
     plt.tight_layout()
     
     return ax
