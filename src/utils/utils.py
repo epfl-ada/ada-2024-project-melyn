@@ -2,6 +2,7 @@ import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle
 
 def categorize_release_season(date):
     """
@@ -34,6 +35,23 @@ def extract_info(infos_str):
         return [info.split(":")[1].strip(" }") for info in infos_str.split(",")]
     except Exception:
         return []
+
+def exploded_format(feature,df,path):
+    """
+    Save an exploded version of the dataframe of the desired feature 
+    Args:
+        feature (str): The feature to be analyzed.
+        df (DataFrame): The prepared DataFrame
+    """
+    df_exploded = df.explode(feature)[['Wikipedia_movie_ID','Movie_name','Movie_box_office_revenue','Year','Year_Interval',feature]]
+    pickle.dump( df_exploded, open(path,"wb") )
+    display(df_exploded.value_counts(feature))
+    
+def dropempty(df,feature):
+    len_before = len(df[feature])
+    df = df[df[feature].apply(lambda x: len(x) > 0)]
+    len_after = len(df[feature])
+    return df, len_before-len_after
 
 def prepare_top_n_data(feature, data, n=10):
     """
@@ -68,9 +86,9 @@ def top_n_by_interval(feature, data, n=10, revenue=False):
     """
     df = prepare_top_n_data(feature, data, n)
     if revenue:
-        counts_by_interval = df.groupby(['Year_Interval', feature])['Movie_box_office_revenue'].mean().unstack(fill_value=0)
+        counts_by_interval = df.groupby(['Year_Interval', feature],observed=False)['Movie_box_office_revenue'].mean().unstack(fill_value=0)
     else:
-        counts_by_interval = df.groupby(['Year_Interval', feature]).size().unstack(fill_value=0)
+        counts_by_interval = df.groupby(['Year_Interval', feature],observed=False).size().unstack(fill_value=0)
     
     top_by_interval = counts_by_interval.apply(lambda x: x.nlargest(n), axis=1)
     plot_data = top_by_interval.div(top_by_interval.sum(axis=1), axis=0) * 100
@@ -79,7 +97,7 @@ def top_n_by_interval(feature, data, n=10, revenue=False):
     ax.set_xlabel('Year Interval')
     ax.set_ylabel(f'Percentage of {feature}')
     title_revenue = 'Average Box Office Revenue' if revenue else 'Occurrences'
-    ax.set_title(f'Top {n} {feature} by {title_revenue} by 20-Year Intervals (1910-2016)')
+    ax.set_title(f'Top {n} {feature} by {title_revenue} by 20-Year Intervals (1915-2015)')
     ax.legend(title=f'{feature}', bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
     
@@ -97,12 +115,12 @@ def top_n_total_revenue(feature, data, n=10):
         ax: The plot of the top n features by average box office revenue.
     """
     df = prepare_top_n_data(feature, data, n)
-    avg_revenue_by_genre = df.groupby(feature)['Movie_box_office_revenue'].mean().nlargest(n)
+    avg_revenue_by_genre = df.groupby(feature,observed=False)['Movie_box_office_revenue'].mean().nlargest(n)
     
     ax = avg_revenue_by_genre.plot(kind='bar', figsize=(8, 5), colormap='tab10')
     ax.set_xlabel(feature)
     ax.set_ylabel('Average Box Office Revenue')
-    ax.set_title(f'Top {n} {feature} by Average Box Office Revenue (1910-2016)')
+    ax.set_title(f'Top {n} {feature} by Average Box Office Revenue (1915-2015)')
     plt.tight_layout()
     
     return ax
