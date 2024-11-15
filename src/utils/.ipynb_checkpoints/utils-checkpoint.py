@@ -48,6 +48,15 @@ def exploded_format(feature,df,path):
     display(df_exploded.value_counts(feature))
     
 def dropempty(df,feature):
+    """
+    Drop all the rows containg empty list for the column 'feature'
+    Args:
+        feature (str): The feature to be analyzed.
+        df (DataFrame): The prepared DataFrame
+    Returns:
+        DataFrame: A filtered DataFrame containing only the rows with one or more element in the column 'feature'.
+        N: Number of rows dropped.
+    """
     len_before = len(df[feature])
     df = df[df[feature].apply(lambda x: len(x) > 0)]
     len_after = len(df[feature])

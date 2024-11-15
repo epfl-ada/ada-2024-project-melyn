@@ -44,15 +44,13 @@ To achieve this, we use methods like correlation analysis, cross-tabulations, an
 - **Step 4:** Advanced Data Analysis & Modeling
 We dive deeper into more advanced analyses by using a predictive modeling to estimate the potential box office earnings of a movie based on its genre, cast, and other features. Machine learning algorithms like linear regression, decision trees, or clustering could be used to segment movies based on their features and predict performance metrics. This step is about turning our observations into actionable insights. If we were to predict future trends in the movie industry or determine which characteristics are most likely to result in success, this is where we would apply more sophisticated models.
 
-- **Step 5:** Building the Data Story and Visualization
-
 ## Proposed timeline
 - 15.11.2024 : Step 1 & 2
 
 *(29.11.2024 : Homework 2)*
 - 06.12.2024 : Step 3
 - 13.12.2024 : Step 4
-- 20.12.2024 (Deadline Milestone 3) : Step 5
+- 20.12.2024 : Deadline Milestone 3
 
 ## Team Organization :
 - Elyes Trabelsi: Step 1 & 3 
