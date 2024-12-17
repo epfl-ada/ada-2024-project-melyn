@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Evolution of Cinema</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    /* Button Styling */
+    .dataset-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: gray;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .dataset-button:hover {
+      background-color: #464447;
+      transform: translateY(-2px);
+    }
+
+    /* Styling for the <i> tags inside the button */
+    .dataset-button i {
+      font-style: normal;
+      display: inline-block;
+      color: white;
+      transition: transform 0.4s ease;
+    }
+
+    /* Animate individual letters on hover */
+    .dataset-button:hover i {
+      transform: translateY(-3px);
+    }
+
+    /* Navigation Bar Styles */
+    .nav-container {
+      position: sticky;
+      top: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      padding: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      margin: 0 auto;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+
+    .nav-item {
+      background-color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      white-space: nowrap;
+    }
+
+    .nav-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .nav-item.active {
+      background-color: #f8f9fa;
+      font-weight: bold;
+    }
+
+    /* Hero Section Styles */
+    .hero-section {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+      background-color: #fff;
+      position: relative;
+    }
+
+    .hero-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2rem, 5vw, 4rem);
+      max-width: 700px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: bold;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      color: #222;
+    }
+
+    .hero-content h3 {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content p {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .hero-content .btn-primary {
+      text-decoration: none;
+      background-color: #000;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      align-self: flex-start;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      border: none;
+    }
+
+    .hero-content .btn-primary:hover {
+      background-color: #333;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-image {
+      flex: 1;
+      position: relative;
+      min-height: 100%;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .button {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      transform: translateX(-50%) translateY(5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .button:hover .svgIcon {
+      transition-duration: 0.3s;
+      transform: translateY(200%);
+    }
+
+    .button::before {
+      position: absolute;
+      bottom: -20px;
+      content: "Intro";
+      color: gray;
+      font-size: 20px;
+    }
+
+    .button:hover::before {
+      font-size: 13px;
+      opacity: 1;
+      bottom: unset;
+      transition-duration: 0.3s;
+    }
+
+    .svgIcon {
+      width: 24px;
+      height: 24px;
+      transform: rotate(180deg);
+    }
+
+    .svgIcon path {
+      fill: #333;
+      transition: fill 0.3s ease;
+    }
+
+    .button:hover .svgIcon path {
+      fill: #666;
+    }
+
+    /* Introduction Section Styles */
+    #introduction {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      background-color: #f8f9fa;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .introduction-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .introduction-content h2 {
+      color: #1a365d;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .introduction-content h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: #1a365d;
+      margin: 0.5rem auto 0;
+    }
+
+    .introduction-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #2d3748;
+      text-align: justify;
+      margin: 0;
+    }
+
+    @media (max-width: 968px) {
+      .hero-section {
+        flex-direction: column;
+      }
+
+      .hero-content {
+        padding: 2rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-content .btn-primary {
+        align-self: center;
+      }
+
+      .hero-image {
+        position: relative;
+        height: 50vh;
+      }
+
+      .hero-image img {
+        position: relative;
+      }
+
+      .nav-container {
+        padding: 10px;
+      }
+
+      .nav-item {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+
+      .nav-tabs {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+
+      .introduction-content {
+        padding: 1.5rem;
+      }
+
+      .introduction-content h2 {
+        font-size: 1.75rem;
+      }
+
+      .introduction-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-image {
+        height: 40vh;
+      }
+    }
+
+
+
+    @media (max-width: 768px) {
+        body {
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        h3 {
+            font-size: 1.2em;
+        }
+
+        .dataset-card {
+            padding: 15px;
+        }
+    }
+    .datasets-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .dataset-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .dataset-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .dataset-column {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .dataset-column h3 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 0.5rem;
+    }
+
+    .dataset-column h4 {
+        color: #3498db;
+        margin: 1.5rem 0 0.75rem 0;
+    }
+
+    .dataset-info ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .dataset-info li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .dataset-info li:before {
+        content: "•";
+        color: #3498db;
+        position: absolute;
+        left: 0;
+    }
+
+    .dataset-info li span {
+        display: block;
+        font-size: 0.9em;
+        color: #666;
+        margin-top: 0.25rem;
+    }
+
+    .source {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .source a {
+        color: #3498db;
+        text-decoration: none;
+    }
+
+    .source a:hover {
+        text-decoration: underline;
+    }
+    .dataset-text {
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    padding: 0 20px;
+    }
+
+    .dataset-intro p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #3a4f66;
+    margin: 0;
+    text-align: justify;
+    letter-spacing: 0.2px;
+    }  
+
+    .centered-heading {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    } 
+        
+  </style>
+</head>
+<body>
+
+    <!-- Top-right button-->
+     <!-- Button linking to the dataset -->
+    <a href="http://www.cs.cmu.edu/~ark/personas/" target="_blank" class="dataset-button" alt="tony stark">
+    <i>D</i>
+    <i>A</i>
+    <i>T</i>
+    <i>A</i>
+    <i>S</i>
+    <i>E</i>
+    <i>T</i>
+    </a>
+
+    <!-- Hero Section-->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>The Evolution of Cinema</h1>
+      <h3>The Success Story Behind Box-Office Hits (1915-2015)</h3>
+      <p>
+        Our project examines the evolution of cinema, revealing trends in storytelling, audience preferences, and cultural impact over time.
+      </p>
+      <button onclick="scrollToIntroduction()" class="btn-primary">Ready to explore? 😊</button>
+    </div>
+    <div class="hero-image">
+      <img src="assets/img/2024-12-14 10.35.44.png" alt="Cinema" loading="lazy">
+    </div>
+    <button class="button" onclick="scrollToIntroduction()">
+      <svg class="svgIcon" viewBox="0 0 384 512">
+        <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="nav-container">
+    <ul class="nav-tabs">
+      <li class="nav-item active">Introduction</li>
+      <li class="nav-item">Datasets</li>
+      <li class="nav-item">Countries</li>
+      <li class="nav-item">Genres</li>
+      <li class="nav-item">Release Season</li>
+      <li class="nav-item">Language</li>
+      <li class="nav-item">Actors</li>
+      <li class="nav-item">Conclusion</li>
+    </ul>
+  </nav>
+
+  <section id="introduction">
+    <div class="introduction-content">
+      <h2>Introduction</h2>
+      <p>
+        Cinema has long been a mirror to society, reflecting cultural shifts, technological breakthroughs, and audience preferences. Over the past century, the film industry has transformed dramatically, from silent films in the early 20th century to the CGI-heavy blockbusters of today. These changes have not only redefined the art of storytelling but also reshaped the business of filmmaking, offering unique insights into what drives a movie’s success.
+
+      <strong>The Evolution of Cinema: The Success Story Behind Box-Office Hits (1915–2015)  </strong> explores the critical factors that influenced the success of films during this transformative period. By examining key elements such as genre trends, release schedules, star power, and localization strategies, this project investigates how filmmakers and studios have adapted to the changing tastes of audiences and the emergence of new markets. From the golden age of Hollywood to the global dominance of franchises, this study traces the trajectory of cinema as both an art form and a global industry.
+        
+        Through a data-driven analysis of box-office trends spanning 100 years, we aim to uncover the patterns that define cinematic success. What genres have stood the test of time? How has technology influenced storytelling and audience engagement? What role do international markets and localization play in shaping a film’s global appeal? By answering these questions, this project offers a deeper understanding of the intersection between creativity, commerce, and culture in the world of cinema.
+      </p>
+    </div>
+    </section>
+
+    <section id="datasets" class="datasets-section">
+        <div class="container">
+            <h2 class="centered-heading">Datasets</h2>
+            <div class="dataset-text">
+                <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance. Below, we introduce the two datasets we will use:</p>
+            </div>
+            <div class="dataset-grid">
+                <div class="dataset-column cmu">
+                    <h3>CMU Movie Summary Corpus</h3>
+                    <div class="dataset-info">
+                        <p>Created by researchers at Carnegie Mellon University, this dataset contains metadata for 42,306 movies, including:</p>
+                        <h4>Metadata Provided:</h4>
+                        <ul>
+                            <li>Box-office revenue</li>
+                            <li>Genre(s)</li>
+                            <li>Release date</li>
+                            <li>Runtime</li>
+                            <li>Language(s)</li>
+                            <li>Country of origin</li>
+                        </ul>
+                        <h4>Actor and Character Information:</h4>
+                        <ul>
+                            <li>Character names</li>
+                            <li>Actor details (name, gender, age, height, ethnicity)</li>
+                        </ul>
+                        <h4>Supplementary Data:</h4>
+                        <ul>
+                            <li>Processed summaries using Stanford CoreNLP</li>
+                            <li>Named entity recognition (NER)</li>
+                            <li>Coreference resolution</li>
+                        </ul>
+                        <div class="source">
+                            <p>Source: <a href="http://www.cs.cmu.edu/~ark/personas/">CMU Movie Summary Corpus</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataset-column imdb">
+                    <h3>IMDb Datasets</h3>
+                    <div class="dataset-info">
+                        <p>Comprehensive movie information from IMDb, including:</p>
+                        <h4>Key Files:</h4>
+                        <ul>
+                            <li>title.basics.tsv.gz
+                                <span>Movie metadata, titles, genres, release years, runtime</span>
+                            </li>
+                            <li>title.ratings.tsv.gz
+                                <span>IMDb ratings and vote counts</span>
+                            </li>
+                        </ul>
+                        <h4>Analysis Capabilities:</h4>
+                        <ul>
+                            <li>Audience ratings correlation with success</li>
+                            <li>Localization strategies impact</li>
+                            <li>Genre popularity trends</li>
+                            <li>Movie reach and revenue patterns</li>
+                        </ul>
+                        <div class="source">
+                            <p>Source: <a href="https://datasets.imdbws.com/">IMDb Data Files</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <br>
+            <h3> Simple Analysis of our datasets</h3>
+            <div class="dataset-text">
+                <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance. Below, we introduce the two datasets we will use:</p>
+            </div>
+
+    
+        </div>
+    </section>
+
+  <script>
+    function scrollToIntroduction() {
+      document.getElementById('introduction').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+  
+
+  
+</body>
+</html>
