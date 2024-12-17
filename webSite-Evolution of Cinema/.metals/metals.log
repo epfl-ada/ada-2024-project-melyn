@@ -400,3 +400,39 @@ n
 2024.12.17 12:12:47 INFO  no build target found for /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc. Using presentation compiler with project's scala-library version: 3.3.4[0m
 2024.12.17 12:12:47 INFO  no build target found for /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc. Using presentation compiler with project's scala-library version: 3.3.4[0m
 2024.12.17 12:12:47 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 3.42s[0m
+2024.12.17 13:28:51 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 13:28:51 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.21s[0m
+2024.12.17 13:28:52 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 13:28:51 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.16s[0m
+2024.12.17 14:04:00 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 14:04:00 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.17s[0m
+2024.12.17 14:07:51 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 14:07:51 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.15s[0m
+2024.12.17 14:28:57 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 14:28:58 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.16s[0m
+2024.12.17 14:29:00 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 14:29:00 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.11s[0m
+2024.12.17 19:06:05 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 19:06:05 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.14s[0m
+2024.12.17 19:08:19 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+[31merror[39m: webSite-Evolution%20of%20Cinema.worksheet.sc:1:1: 
+Not found: D
+D
+^
+2024.12.17 19:08:20 INFO  file:///Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution%20of%20Cinema/webSite-Evolution%2520of%2520Cinema.worksheet.sc:1:1: stale mdoc error:
+Not found: D
+
+^[0m
+2024.12.17 19:08:20 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.17s[0m
+2024.12.17 19:08:21 INFO  file:///Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution%20of%20Cinema/webSite-Evolution%2520of%2520Cinema.worksheet.sc:1:1: stale mdoc error:
+Not found: D
+
+^[0m
+2024.12.17 19:55:47 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 19:55:47 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.15s[0m
+2024.12.17 23:05:21 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 23:05:21 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.18s[0m
+2024.12.17 23:05:21 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 23:05:21 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 88ms[0m
+2024.12.17 23:05:21 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc[0m
+2024.12.17 23:05:21 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 0.11s[0m

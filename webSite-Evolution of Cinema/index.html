@@ -4,606 +4,762 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Evolution of Cinema</title>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
 
-    *, *::before, *::after {
+  <style>
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  /* Button Styling */
+  
+
+  .menu-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+  }
+
+  .menu {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #000000;
+      width: fit-content;
+      display: flex;
+      list-style: none;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
+  }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-    /* Button Styling */
-    
-
-    .menu-container {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1000;
-    }
-
-    .menu {
-        font-size: 16px;
-        line-height: 1.6;
-        color: #000000;
-        width: fit-content;
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .menu a {
-        text-decoration: none;
-        color: inherit;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
-    }
-
-    .menu .link {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        padding: 12px 36px;
-        border-radius: 16px;
-        overflow: hidden;
-        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .menu .link::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #3498db;
-        z-index: -1;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .menu .link svg {
-        width: 14px;
-        height: 14px;
-        fill: #000000;
-        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .menu .item {
-        position: relative;
-    }
-
-    .menu .item .submenu {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        top: 100%;
-        border-radius: 0 0 16px 16px;
-        right: 0;
-        width: 200px;
-        overflow: hidden;
-        border: 1px solid #cccccc;
-        background-color: white;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-12px);
-        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-        z-index: 1;
-        pointer-events: none;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .menu .item:hover .submenu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        pointer-events: auto;
-        border-top: transparent;
-        border-color: black;
-    }
-
-    .menu .item:hover .link {
-        color: #ffffff;
-        border-radius: 16px 16px 0 0;
-    }
-
-    .menu .item:hover .link::after {
-        transform: scaleX(1);
-        transform-origin: right;
-    }
-
-    .menu .item:hover .link svg {
-        fill: #ffffff;
-        transform: rotate(-180deg);
-    }
-
-    .submenu .submenu-item {
-        width: 100%;
-        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .submenu .submenu-link {
-        display: block;
-        padding: 12px 24px;
-        width: 100%;
-        position: relative;
-        text-align: center;
-        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .submenu .submenu-item:last-child .submenu-link {
-        border-bottom: none;
-    }
-
-    .submenu .submenu-link::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: scaleX(0);
-        width: 100%;
-        height: 100%;
-        background-color: #3498db;
-        z-index: -1;
-        transform-origin: left;
-        transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .submenu .submenu-link:hover:before {
-        transform: scaleX(1);
-        transform-origin: right;
-    }
-
-    .submenu .submenu-link:hover {
-        color: #ffffff;
-    }
-
-
-    /* Navigation Bar Styles */
-    .nav-container {
-      position: sticky;
-      top: 20px;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      z-index: 1000;
-      display: flex;
-      justify-content: center;
-    }
-
-    .nav-tabs {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-      padding: 10px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      margin: 0 auto;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-tabs::-webkit-scrollbar {
-      display: none;
-    }
-
-
-    .nav-item {
-      background-color: #ffffff;
-      padding: 12px 24px;
-      border-radius: 25px;
-      font-size: 16px;
-      color: #333;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      white-space: nowrap;
-    }
-
-    .nav-item:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transform: translateY(-2px);
-    }
-
-    .nav-item.active {
-      background-color: #f8f9fa;
-      font-weight: bold;
-    }
-
-    /* Hero Section Styles */
-    .hero-section {
-      display: flex;
-      min-height: 100vh;
-      width: 100%;
-      background-color: #fff;
-      position: relative;
-    }
-
-    .hero-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: clamp(2rem, 5vw, 4rem);
-      max-width: 700px;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: bold;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-      color: #222;
-    }
-
-    .hero-content h3 {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
-      color: #3498db;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-content p {
-      font-size: clamp(1rem, 2vw, 1.1rem);
-      line-height: 1.6;
-      color: #666;
-      margin-bottom: 2rem;
-      max-width: 600px;
-    }
-
-    .hero-content .btn-primary {
+  .menu a {
       text-decoration: none;
-      background-color: #000;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: inline-block;
-      align-self: flex-start;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      border: none;
-    }
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+  }
 
-    .hero-content .btn-primary:hover {
-      background-color: #333;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .hero-image {
-      flex: 1;
+  .menu .link {
       position: relative;
-      min-height: 100%;
-    }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 36px;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+  .menu .link::after {
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
-    }
-
-    .button {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: white;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .button:hover {
-      transform: translateX(-50%) translateY(5px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .button:hover .svgIcon {
-      transition-duration: 0.3s;
-      transform: translateY(200%);
-    }
-
-    .button::before {
-      position: absolute;
-      bottom: -20px;
-      content: "Intro";
-      color: #3498db;
-      font-size: 20px;
-    }
-
-    .button:hover::before {
-      font-size: 13px;
-      opacity: 1;
-      bottom: unset;
-      transition-duration: 0.3s;
-    }
-
-    .svgIcon {
-      width: 24px;
-      height: 24px;
-      transform: rotate(180deg);
-    }
-
-    .svgIcon path {
-      fill: #333;
-      transition: fill 0.3s ease;
-    }
-
-    .button:hover .svgIcon path {
-      fill: #666;
-    }
-
-    /* Introduction Section Styles */
-    #introduction {
-      min-height: 100vh;
-      padding: 4rem 2rem;
-      background-color: #f8f9fa;
       width: 100%;
+      height: 100%;
+      background-color: #3498db;
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .menu .link svg {
+      width: 14px;
+      height: 14px;
+      fill: #000000;
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .menu .item {
+      position: relative;
+  }
+
+  .menu .item .submenu {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-    }
-
-    .introduction-content {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem;
+      position: absolute;
+      top: 100%;
+      border-radius: 0 0 16px 16px;
+      right: 0;
+      width: 200px;
+      overflow: hidden;
+      border: 1px solid #cccccc;
       background-color: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 1;
+      pointer-events: none;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  .menu .item:hover .submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+      border-top: transparent;
+      border-color: black;
+  }
+
+  .menu .item:hover .link {
+      color: #ffffff;
+      border-radius: 16px 16px 0 0;
+  }
+
+  .menu .item:hover .link::after {
+      transform: scaleX(1);
+      transform-origin: right;
+  }
+
+  .menu .item:hover .link svg {
+      fill: #ffffff;
+      transform: rotate(-180deg);
+  }
+
+  .submenu .submenu-item {
+      width: 100%;
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .submenu .submenu-link {
+      display: block;
+      padding: 12px 24px;
+      width: 100%;
+      position: relative;
+      text-align: center;
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .submenu .submenu-item:last-child .submenu-link {
+      border-bottom: none;
+  }
+
+  .submenu .submenu-link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scaleX(0);
+      width: 100%;
+      height: 100%;
+      background-color: #3498db;
+      z-index: -1;
+      transform-origin: left;
+      transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .submenu .submenu-link:hover:before {
+      transform: scaleX(1);
+      transform-origin: right;
+  }
+
+  .submenu .submenu-link:hover {
+      color: #ffffff;
+  }
+
+
+  /* Navigation Bar Styles */
+  .nav-container {
+    position: sticky;
+    top: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-tabs {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .nav-item {
+    background-color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+  }
+
+  .nav-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .nav-item.active {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+  /* Hero Section Styles */
+  .hero-section {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+  }
+
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 5vw, 4rem);
+    max-width: 700px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: bold;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #222;
+  }
+
+  .hero-content h3 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: #3498db;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .hero-content .btn-primary {
+    text-decoration: none;
+    background-color: #000;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    align-self: flex-start;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border: none;
+  }
+
+  .hero-content .btn-primary:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .hero-image {
+    flex: 1;
+    position: relative;
+    min-height: 100%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .button:hover {
+    transform: translateX(-50%) translateY(5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .button:hover .svgIcon {
+    transition-duration: 0.3s;
+    transform: translateY(200%);
+  }
+
+  .button::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Intro";
+    color: #3498db;
+    font-size: 20px;
+  }
+
+  .button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition-duration: 0.3s;
+  }
+
+  .svgIcon {
+    width: 24px;
+    height: 24px;
+    transform: rotate(180deg);
+  }
+
+  .svgIcon path {
+    fill: #333;
+    transition: fill 0.3s ease;
+  }
+
+  .button:hover .svgIcon path {
+    fill: #666;
+  }
+
+  /* Introduction Section Styles */
+  #introduction {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .introduction-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .introduction-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .introduction-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .introduction-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+  @media (max-width: 968px) {
+    .hero-section {
+      flex-direction: column;
     }
 
-    .introduction-content h2 {
-      color: #1a365d;
-      font-size: 2rem;
+    .hero-content {
+      padding: 2rem;
+      align-items: center;
       text-align: center;
-      margin-bottom: 2rem;
+    }
+
+    .hero-content .btn-primary {
+      align-self: center;
+    }
+
+    .hero-image {
+      position: relative;
+      height: 50vh;
+    }
+
+    .hero-image img {
       position: relative;
     }
 
-    .introduction-content h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background-color: #1a365d;
-      margin: 0.5rem auto 0;
+    .nav-container {
+      padding: 10px;
+    }
+
+    .nav-item {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .nav-tabs {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+    }
+
+    
+    .introduction-content {
+      padding: 1.5rem;
+    }
+
+    .introduction-content h2 {
+      font-size: 1.75rem;
     }
 
     .introduction-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #2d3748;
-      text-align: justify;
-      margin: 0;
+      font-size: 1rem;
+      line-height: 1.6;
     }
+  }
 
-    @media (max-width: 968px) {
-      .hero-section {
-        flex-direction: column;
-      }
-
-      .hero-content {
-        padding: 2rem;
-        align-items: center;
-        text-align: center;
-      }
-
-      .hero-content .btn-primary {
-        align-self: center;
-      }
-
-      .hero-image {
-        position: relative;
-        height: 50vh;
-      }
-
-      .hero-image img {
-        position: relative;
-      }
-
-      .nav-container {
-        padding: 10px;
-      }
-
-      .nav-item {
-        padding: 8px 16px;
-        font-size: 14px;
-      }
-
-      .nav-tabs {
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        overflow-x: auto;
-      }
-
-      .introduction-content {
-        padding: 1.5rem;
-      }
-
-      .introduction-content h2 {
-        font-size: 1.75rem;
-      }
-
-      .introduction-content p {
-        font-size: 1rem;
-        line-height: 1.6;
-      }
+  @media (max-width: 480px) {
+    .hero-image {
+      height: 40vh;
     }
+  }
 
-    @media (max-width: 480px) {
-      .hero-image {
-        height: 40vh;
+/* Dataset section on the website */
+
+  @media (max-width: 768px) {
+      body {
+          padding: 15px;
       }
-    }
+
+      h1 {
+          font-size: 2em;
+      }
+
+      h2 {
+          font-size: 1.5em;
+      }
+
+      h3 {
+          font-size: 1.2em;
+      }
 
 
+      .dataset-card {
+          padding: 15px;
+      }
 
-    @media (max-width: 768px) {
-        body {
-            padding: 15px;
+  }
+
+  .datasets-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+  }
+
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+
+  .dataset-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+      .dataset-grid {
+          grid-template-columns: 1fr;
+      }
+  }
+
+  .dataset-column {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+
+  .dataset-column h3 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 0.5rem;
+  }
+
+  .dataset-column h4 {
+      color: #3498db;
+      margin: 1.5rem 0 0.75rem 0;
+  }
+
+  .dataset-info ul {
+      list-style-type: none;
+      padding-left: 0;
+  }
+
+  .dataset-info li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+  }
+
+  .dataset-info li:before {
+      content: "•";
+      color: #3498db;
+      position: absolute;
+      left: 0;
+  }
+
+  .dataset-info li span {
+      display: block;
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 0.25rem;
+  }
+
+  .source {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.9em;
+      color: #666;
+  }
+
+  .source a {
+      color: #3498db;
+      text-decoration: none;
+  }
+
+  .source a:hover {
+      text-decoration: underline;
+  }
+
+  .text {
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  padding: 0 20px;
+  }
+
+  .dataset-intro p {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  color: #1a365d;
+  margin: 0;
+  text-align: justify;
+  letter-spacing: 0.2px;
+  }  
+
+  .centered-heading-Title {
+  text-align: center;
+  color: #1a365d;
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  } 
+
+  .centered-heading-Title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #1a365d;    /* Même couleur que le titre */
+  margin: 0.5rem auto 0;
+  }
+
+  .centered-heading-SubTitle {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  } 
+
+  /* Datastory section Style */ 
+.datastory-section{
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+/* Timeline */
+.timeline {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  }
+
+  .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #333;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+  .timeline-period {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      margin: 20px 0;
+  }
+
+  .timeline-period::after {
+    content: '';
+  position: absolute;
+  width: 24px; /* Ajusté */
+  height: 24px; /* Ajusté */
+  background-color: white;
+  border: 3px solid #3498db; /* Bordure plus fine */
+  border-radius: 50%;
+  z-index: 1;
+  top: calc(50% + 27px); /* Ajusté pour le positionnement vertical */
+  }
+
+  .timeline-left {
+      left: 0;
+  }
+
+  .timeline-right {
+      left: 50%;
+  }
+
+  .timeline-left::after {
+      right: -12px;
+  }
+
+  .timeline-right::after {
+      left: -12px;
+  }
+
+  .timeline-content {
+      padding: 20px;
+      background-color: white;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .timeline-content h2 {
+      color: #333;
+      margin-bottom: 10px;
+  }
+
+  .timeline-content .years {
+      color: #3498db;
+      font-weight: bold;
+  }
+
+  .guide {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 10px;
+  }
+
+  .timeline-factors {
+      margin-top: 10px;
+      padding-left: 20px;
+  }
+
+  .timeline-factors li {
+      margin: 5px 0;
+      color: #555;
+  }
+
+  @media screen and (max-width: 600px) {
+      .timeline::after {
+          left: 25px;
+      }
+
+      .timeline-period {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+      }
+
+      .timeline-period::after {
+          left: 15px;
+      }
+
+      .timeline-right {
+          left: 0;
+      }
+  }
+
+  /* Make the text itlic and grey (useful for different steps of the chapter 0 */ 
+  .grey-italic {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 17px;
+            color: grey; /* You can also use hex (#808080), rgb, or hsl values for grey */
         }
 
-        h1 {
-            font-size: 2em;
-        }
+  
+</style>
 
-        h2 {
-            font-size: 1.5em;
-        }
 
-        h3 {
-            font-size: 1.2em;
-        }
 
-        .dataset-card {
-            padding: 15px;
-        }
-    }
-    .datasets-section {
-    padding: 4rem 0;
-    background-color: #f8f9fa;
-    }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
 
-    .dataset-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
 
-    @media (max-width: 768px) {
-        .dataset-grid {
-            grid-template-columns: 1fr;
-        }
-    }
 
-    .dataset-column {
-        background: white;
-        border-radius: 10px;
-        padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
 
-    .dataset-column h3 {
-        color: #2c3e50;
-        margin-bottom: 1.5rem;
-        border-bottom: 2px solid #3498db;
-        padding-bottom: 0.5rem;
-    }
-
-    .dataset-column h4 {
-        color: #3498db;
-        margin: 1.5rem 0 0.75rem 0;
-    }
-
-    .dataset-info ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-    .dataset-info li {
-        margin-bottom: 0.5rem;
-        padding-left: 1.5rem;
-        position: relative;
-    }
-
-    .dataset-info li:before {
-        content: "•";
-        color: #3498db;
-        position: absolute;
-        left: 0;
-    }
-
-    .dataset-info li span {
-        display: block;
-        font-size: 0.9em;
-        color: #666;
-        margin-top: 0.25rem;
-    }
-
-    .source {
-        margin-top: 2rem;
-        padding-top: 1rem;
-        border-top: 1px solid #eee;
-        font-size: 0.9em;
-        color: #666;
-    }
-
-    .source a {
-        color: #3498db;
-        text-decoration: none;
-    }
-
-    .source a:hover {
-        text-decoration: underline;
-    }
-    .dataset-text {
-    max-width: 900px;
-    margin: 0 auto 3rem auto;
-    padding: 0 20px;
-    }
-
-    .dataset-intro p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #3a4f66;
-    margin: 0;
-    text-align: justify;
-    letter-spacing: 0.2px;
-    }  
-
-    .centered-heading {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 2.5rem;
-    font-size: 2.5rem;
-    font-weight: 600;
-    } 
-        
-  </style>
+      
 </head>
 <body>
   <div class="header">
@@ -656,14 +812,14 @@
 
   <nav class="nav-container">
     <ul class="nav-tabs">
-      <li class="nav-item active">Introduction</li>
       <li class="nav-item">Datasets</li>
-      <li class="nav-item">Countries</li>
-      <li class="nav-item">Genres</li>
-      <li class="nav-item">Release Season</li>
-      <li class="nav-item">Language</li>
-      <li class="nav-item">Actors</li>
-      <li class="nav-item">Conclusion</li>
+      <li class="nav-item"> Chapter 0  </li>
+      <li class="nav-item"> Chapter 1  </li>
+      <li class="nav-item"> Chapter 2 </li>
+      <li class="nav-item"> Chapter 3 </li>
+      <li class="nav-item"> Chapter 4  </li>
+      <li class="nav-item"> Chapter 5 </li>
+      <li class="nav-item"> The End </li>
     </ul>
   </nav>
 
@@ -685,8 +841,8 @@
 
     <section id="datasets" class="datasets-section">
         <div class="container">
-            <h2 class="centered-heading">Datasets</h2>
-            <div class="dataset-text">
+            <h2 class="centered-heading-Title">Datasets</h2>
+            <div class="text">
                 <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance. Below, we introduce the two datasets we will use:</p>
             </div>
             <div class="dataset-grid">
@@ -747,14 +903,139 @@
                 
             </div>
             <br>
-            <h3> Simple Analysis of our datasets</h3>
-            <div class="dataset-text">
-                <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance. Below, we introduce the two datasets we will use:</p>
+            <h3 class="centered-heading-SubTitle"> Simple Analysis of our datasets</h3>
+            <div class="text">
+                <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance.</p>
             </div>
+            
 
     
         </div>
-    </section>
+  </section>
+
+  <section id="datastory" class="datastory-section">
+    <div class="container">
+        <h2 class="centered-heading-Title">Chapter 0: The Beginning</h2>
+        <div class="text">
+            <p><span class="grey-italic">Challenge:</span></p>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At the prestigious École Polytechnique Fédérale de Lausanne (EPFL), nestled in the serene Swiss city of Lausanne, five students shared an unlikely passion: cinema. Although they were studying engineering and science, Lucas, Myriam, Najmeddine, Elyes, and Yassine found solace in their ADA course, led by the eccentric Professor Allocio, a woman known for her unorthodox teaching methods. One late afternoon, as sunlight streamed through the large glass windows of the Rolex Learning Center, Professor Allocio gave her class an extraordinary challenge: “Your final project is to explore the evolution of cinema from 1915 to 2015. But don’t just present it—make it extraordinary. Surprise me.”
+            </p>
+
+            <p><span class="grey-italic"><br>Brainstorming:</span></p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It was Myriam, a passionate cinephile, who proposed an audacious idea during their brainstorming session. “What if,” she said, her voice brimming with excitement, “we didn’t just study the history of cinema… but lived it?”<br>
+                
+                The others exchanged skeptical glances, except for Elyes, the group’s tech guru and inventor. His eyes narrowed as he leaned forward. “Actually…” he began, “that might not be as crazy as it sounds.”<br>
+
+                Elyes explained that he had been working in secret on a groundbreaking project in one of the university’s lesser-known labs. His invention, called the ChronoPorteur, was an experimental device capable of manipulating spacetime. Initially intended for simulating historical scientific phenomena, he believed it could be modified to allow actual travel through time.<br>
+
+                - Najmeddine, the skeptic of the group, raised an eyebrow. “Wait, you’re saying we could actually go back in time?”<br>
+
+                - “Theoretically, yes,” Elyes replied. “But there’s a catch. If we interfere with historical events, we could alter the timeline in ways we can’t predict.”<br>
+
+                - Yassine, the group’s blockbuster enthusiast and eternal optimist, grinned. “So? Imagine standing on set with Chaplin, or watching Godard debate Truffaut, or even visiting Spielberg during Jaws! This could be legendary.”<br>
+
+                - Lucas, the cautious and pragmatic one, folded his arms. “And if something goes wrong? What if we can’t come back?”<br>
+
+                - Myriam leaned in, her voice unwavering. “If we don’t take risks, we’ll never create something truly groundbreaking. Isn’t that what cinema teaches us—to dream big?”<br>
+
+                After days of debate, the group made their decision. They would use Elyes’ ChronoPorteur to travel to five pivotal moments in the history of cinema. They spent a week fine-tuning the machine, adjusting its parameters to minimize risks.
+            </p>
+        </div>
+    </div>
+    <div class="timeline">
+        <!-- Chapter 1 -->
+        <div class="timeline-period timeline-left">
+            <div class="timeline-content">
+                <!--<div class="guide">Guide : Emma, passionnée de cinéma muet</div>-->
+                <h2><span class="years">1915-1930</span> : Silent Films</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div class="timeline-period timeline-right">
+            <div class="timeline-content">
+                <!--<div class="guide">Guide : Lucas, expert en effets spéciaux</div>-->
+                <h2><span class="years">1930-1950:</span> Studio Glory</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <!-- Chapter 3 -->
+        <div class="timeline-period timeline-left">
+            <div class="timeline-content">
+                <!-- <div class="guide">Guide : Sofia, spécialiste du cinéma d'auteur</div>-->
+                <h2><span class="years">1950-1970:</span> Auteur Rise</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <!-- Chapter 4 -->
+        <div class="timeline-period timeline-right">
+            <div class="timeline-content">
+                <!-- <div class="guide">Guide : Marcus, fan de blockbusters</div>-->
+                <h2><span class="years">1970-2000:</span> Global Blockbusters</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <!-- Chapter 5 -->
+        <div class="timeline-period timeline-left">
+            <div class="timeline-content">
+                <h2><span class="years">2000-2015:</span> Digital Diversity</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+    </div>
+</section>
+    
+  
+
+
+
+
+
+    
+
+
 
   <script>
     function scrollToIntroduction() {
