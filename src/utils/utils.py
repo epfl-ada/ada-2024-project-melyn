@@ -14,13 +14,13 @@ def categorize_release_season(date):
     Returns:
         str: The category of the release date.
     """
-    if date.month in [6, 7, 8]:
+    if date in [6, 7, 8]:
         return 'Summer'
-    elif date.month in [9, 10, 11]:
+    elif date in [9, 10, 11]:
         return 'Autumn'
-    elif date.month in [1, 2, 12]:
+    elif date in [1, 2, 12]:
         return 'Winter'
-    elif date.month in [3, 4, 5]:
+    elif date in [3, 4, 5]:
         return 'Spring'
     else:
         return 'NaN'
