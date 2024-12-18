@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Evolution of Cinema</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
   <style>
 
@@ -235,6 +236,12 @@
     background-color: #f8f9fa;
     font-weight: bold;
   }
+
+  .nav-tabs .nav-item a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
 
   /* Hero Section Styles */
   .hero-section {
@@ -1094,7 +1101,8 @@
     text-align: justify;
     margin: 0;
   }
-  
+
+
 </style>
 
 
@@ -1157,16 +1165,16 @@
 
   <nav class="nav-container">
     <ul class="nav-tabs">
-      <li class="nav-item">Datasets</li>
-      <li class="nav-item"> Chapter 0  </li>
-      <li class="nav-item"> Chapter 1  </li>
-      <li class="nav-item"> Chapter 2 </li>
-      <li class="nav-item"> Chapter 3 </li>
-      <li class="nav-item"> Chapter 4  </li>
-      <li class="nav-item"> Chapter 5 </li>
-      <li class="nav-item"> The End </li>
+        <li class="nav-item"><a href="#datasets">Datasets</a></li>
+        <li class="nav-item"><a href="#chapter0">Chapter 0</a></li>
+        <li class="nav-item"><a href="#chapter1">Chapter 1</a></li>
+        <li class="nav-item"><a href="#chapter2">Chapter 2</a></li>
+        <li class="nav-item"><a href="#chapter3">Chapter 3</a></li>
+        <li class="nav-item"><a href="#chapter4">Chapter 4</a></li>
+        <li class="nav-item"><a href="#chapter5">Chapter 5</a></li>
+        <li class="nav-item"><a href="#conclusion">The End</a></li>
     </ul>
-  </nav>
+</nav>
 
   <section id="introduction">
     
@@ -1183,80 +1191,6 @@
     </section>
 
 
-
-    <section id="datasets" class="datasets-section">
-        <div class="container">
-            <h2 class="centered-heading-Title">Datasets</h2>
-            <div class="text">
-                <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance. Below, we introduce the two datasets we will use:</p>
-            </div>
-            <div class="dataset-grid">
-                <div class="dataset-column cmu">
-                    <h3>CMU Movie Summary Corpus</h3>
-                    <div class="dataset-info">
-                        <p>Created by researchers at Carnegie Mellon University, this dataset contains metadata for 42,306 movies, including:</p>
-                        <h4>Metadata Provided:</h4>
-                        <ul>
-                            <li>Box-office revenue</li>
-                            <li>Genre(s)</li>
-                            <li>Release date</li>
-                            <li>Runtime</li>
-                            <li>Language(s)</li>
-                            <li>Country of origin</li>
-                        </ul>
-                        <h4>Actor and Character Information:</h4>
-                        <ul>
-                            <li>Character names</li>
-                            <li>Actor details (name, gender, age, height, ethnicity)</li>
-                        </ul>
-                        <h4>Supplementary Data:</h4>
-                        <ul>
-                            <li>Processed summaries using Stanford CoreNLP</li>
-                            <li>Named entity recognition (NER)</li>
-                            <li>Coreference resolution</li>
-                        </ul>
-                        <div class="source">
-                            <p>Source: <a href="http://www.cs.cmu.edu/~ark/personas/">CMU Movie Summary Corpus</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="dataset-column imdb">
-                    <h3>IMDb Datasets</h3>
-                    <div class="dataset-info">
-                        <p>Comprehensive movie information from IMDb, including:</p>
-                        <h4>Key Files:</h4>
-                        <ul>
-                            <li>title.basics.tsv.gz
-                                <span>Movie metadata, titles, genres, release years, runtime</span>
-                            </li>
-                            <li>title.ratings.tsv.gz
-                                <span>IMDb ratings and vote counts</span>
-                            </li>
-                        </ul>
-                        <h4>Analysis Capabilities:</h4>
-                        <ul>
-                            <li>Audience ratings correlation with success</li>
-                            <li>Localization strategies impact</li>
-                            <li>Genre popularity trends</li>
-                            <li>Movie reach and revenue patterns</li>
-                        </ul>
-                        <div class="source">
-                            <p>Source: <a href="https://datasets.imdbws.com/">IMDb Data Files</a></p>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <br>
-            <h3 class="centered-heading-SubTitle"> Simple Analysis of our datasets</h3>
-            <div class="text">
-                <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance.</p>
-            </div>
-            
-
-    
-        </div>
-  </section>
 
   <section id="chapter0">
     <div class="chapter0-content">
@@ -1402,29 +1336,55 @@
   <div class="chapter1-content">
     <h2 class="centered-heading-Title">Chapter 1: The Silent Era</h2>
     <div class="text">
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The group sat around a bright, modern table at the Rolex Learning Center, its open, airy design buzzing quietly with the energy 
+        of collaboration and curiosity. <br>
+        - Elyes, happy of his invention asked "How was it?"<br>
+        - Myriam smiled. “It was magical. Silent films ruled, telling stories through visuals and music. Chaplin made us laugh, Metropolis 
+        made us think, and filmmakers everywhere were innovating. However, everything changed in 1927 with The Jazz Singer, the first major
+        ‘talkie’. It completely transformed the industry...”<br>
+      </p>
 
-     <p> 
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The group sat around a bright, modern table at the Rolex Learning Center, its open, airy design buzzing quietly with the energy 
-      of collaboration and curiosity. <br>
-      - Elyes, happy of his invention asked "How was it ?"<br>
-      -  Myriam smiled. “It was magical. Silent films ruled, telling stories through visuals and music. Chaplin made us laugh, Metropolis 
-      made us think, and filmmakers everywhere were innovating. However, everything changed in 1927 with The Jazz Singer, the first major
-      ‘talkie’. It completely transformed the industry...”<br>
+        <!-- Include the plot -->
 
-      <div class="charts">
-        <!-- Interactive Chart -->
-       <div id="genre-chart" style="width:100%;max-width:600px;height:400px;margin:20px auto;"></div>
-       {% include nom_plot.html %}
-
-     </p>
+        <iframe src="plots/timeline_plot.html" width="800" height="600" frameborder="0"></iframe>
     
+      <p>
+        Myriam gestured toward the plot on the screen, her voice filled with excitement. “Look at this,” she said, pointing to the sharp rise of silent films through the 1910s and 1920s.
+         “For most of this period, silent films completely ruled the industry, telling stories through visuals and music. But everything changed in 1927 with The Jazz Singer. You can see here,
+         ” she said, tracing the sudden drop, “how the introduction of sound transformed cinema. By 1928, Hollywood had fully converted to sound, and silent films practically disappeared overnight. 
+         It was the end of an era, but also the beginning of a new one that redefined storytelling forever.”<br>
+
+         Myriam paused, letting the significance of the plot sink in before continuing. “But it wasn’t just Hollywood adapting to this monumental shift,” she said, her tone thoughtful. “Around the world,
+          filmmakers were pushing boundaries in ways that redefined cinema as an art form. The World Cinema genre thrived during this period, not just because of the rise of talkies, but because of 
+          groundbreaking innovations and bold storytelling. Unique cinematic styles emerged—styles that challenged conventions and transformed how stories were told on screen.”<br>
+
+      </p>
+      <iframe src="plots/genres_plot.html" width="800" height="400" frameborder="0"></iframe>
+      <p>
+        Myriam smiled and pointed to the second plot now displayed on the screen. “And here’s something fascinating,” she said, gesturing to the bar chart. “Among the top 10 genres of this era, World Cinema
+         stands out with the highest average ratings. It wasn’t just about technical innovations—it was about storytelling that resonated deeply with audiences. Films like The Cabinet of Dr. Caligari or 
+         Metropolis pushed creative boundaries, delivering bold, innovative narratives that captured the imagination of viewers around the globe. This genre was a testament to how cinema was evolving into a 
+         universal language, even as sound began to reshape the industry.”<br>
+
+         Myriam transitioned seamlessly, pointing to a new plot now displayed beside the previous one. “While World Cinema boasted some of the highest-rated films, it’s important to see this in the context 
+         of production,” she explained, gesturing to the pie chart showing the global distribution of film production. “As you can see, the U.S. absolutely dominated movie production during this period, thanks
+          to the emergence of Hollywood as an industrial powerhouse. American studios were churning out films at an unprecedented rate, far outpacing other countries.”<br>
+
+         She paused, then added, “However, the late 1920s marked the beginning of something new. The rise of talkies didn’t just transform Hollywood—it also sparked the emergence of unique cinematic movements 
+         around the world, like German Expressionism. Each country began to develop its own film identity, producing movies in their native languages. But during this time, globalization was minimal—there were 
+         hardly any translations, and films largely stayed within their own borders.”<br>
+         
+         She leaned back, considering the data. “Because silent films dominated most of this era, language isn’t really an interesting feature to study—it’s mostly irrelevant before talkies. And even after their
+          emergence, language essentially mirrors country of origin, since each nation produced films in its own language with little international exchange.”<br>
+         
+         
+      </p>
+
+      <iframe src="plots/film_production_chapter2.html" width="800" height="400" frameborder="0"></iframe>
 
     </div>
-
-
-
   </div>
-
 </section>
 
 <section id="chapter2">
@@ -1432,13 +1392,20 @@
     <h2 class="centered-heading-Title">Chapter 2: Hollywood's Golden Age</h2>
     <div class="text">
       <p>
-        Hollywood in the 1930s and 1940s was a place of unparalleled creativity and spectacle, and stepping into this world was like entering a dream. The Golden Age of cinema marked the advent of synchronized sound and vibrant Technicolor, innovations that revolutionized storytelling and captivated audiences. As the United States grappled with the Great Depression and later World War II, cinema became a powerful escape, offering both hope and inspiration. Films like Gone with the Wind and Casablanca weren’t just entertainment—they were cultural touchstones that reflected and shaped the era’s collective consciousness.
-My journey began on the sprawling set of Gone with the Wind. The scale of the production was breathtaking, from the elaborate costumes to the meticulously designed sets. Watching Vivien Leigh and Clark Gable bring their iconic characters to life was an unforgettable experience. Later, I attended the premiere of The Wizard of Oz and witnessed the audience’s collective gasp as Dorothy stepped into the Technicolor world of Oz. Judy Garland’s performance of “Over the Rainbow” brought tears to many eyes, and it was clear why this film became a timeless classic.
-I spent time with studio executives who explained the workings of the Hollywood studio system, which operated like a well-oiled machine. Studios controlled everything from production to distribution, crafting stars and producing films that appealed to the masses. I learned how genres flourished during this time, with musicals, screwball comedies, and film noir offering a mix of escapism and social commentary. Musicals like Singin’ in the Rain lifted spirits with their infectious energy, while noir films reflected the era’s darker undercurrents, exploring themes of morality and existential despair.
-This period wasn’t just about Hollywood, though. The war effort saw cinema used as propaganda, with films like Why We Fight rallying audiences to support the Allied cause. International cinema also began to gain traction, with directors like Jean Renoir and Vittorio De Sica offering alternative perspectives. As I collected data, I noted how box office trends, audience demographics, and technological advancements shaped the industry.
-The Golden Age wasn’t merely a period of technological innovation and creative brilliance—it was a time when cinema became a cornerstone of cultural identity. It reminded me that in times of hardship, people turn to stories not just for escape, but for meaning and connection.
+        The group continued their discussion, energized by Myriam’s passionate retelling of the Silent Era. Elyes turned to Yassine, curiosity in his voice. <br>
 
-      </p>
+      - Elyes: "So, Yassine, what made the Golden Age so groundbreaking? Was it just about sound and color?" <br>
+      - Yassine leaned forward, his excitement evident. “Sound and color were revolutionary, but it was the cultural impact that made this era truly golden. Films like Gone with the Wind and The Wizard of Oz redefined how stories were told, blending technical innovation with emotional depth. Gone with the Wind, for example, wasn’t just a cinematic masterpiece—it became a cultural phenomenon. Adjusted for inflation, its gross would be an astonishing $4.19 billion in 2022, making it the highest-grossing film of all time. It’s a testament to how these movies resonated with audiences on an unprecedented scale.” <br>
+      - Lucas: "How did the Great Depression and World War II shape the kinds of stories told during this period?" <br>
+      - “Greatly,” Yassine replied, gesturing to a chart on the screen. “During the Depression, cinema became a vital escape. Affordable tickets and uplifting musicals, like Top Hat, gave people a break from harsh realities. When World War II began, cinema shifted gears, becoming both entertainment and propaganda. Films like Casablanca inspired patriotism while addressing themes of sacrifice and unity. Studios collaborated with governments to create war-themed content that kept audiences engaged and informed, giving people hope during turbulent times.” <br>
+      - Myriam: "Was Hollywood the only key player, or did other countries make their mark?" <br> 
+      - “Hollywood dominated in scale,” Yassine explained, pointing to a global production chart, “but movements like Italian Neorealism emerged after the war, bringing raw, emotional storytelling to the forefront. Films like Bicycle Thieves depicted post-war struggles with a realism Hollywood didn’t often explore. In Japan, directors like Kurosawa began making their mark with films that blended cultural specificity and universal themes, laying the groundwork for global recognition. These movements expanded cinema’s creative scope beyond Hollywood, influencing how stories were told worldwide.”<br>
+      - Yassine leaned back, his voice confident. “The Golden Age was about innovation, resilience, and storytelling that united people across the globe. It wasn’t just an era of technical progress—it was cinema’s emotional and cultural awakening.  
+    </p>
+      <iframe src="plots/film_production_chapter2.html" width="800" height="4à00" frameborder="0"></iframe>
+
+
+
     
 
     </div>
@@ -1454,14 +1421,17 @@ The Golden Age wasn’t merely a period of technological innovation and creative
     <h2 class="centered-heading-Title">Chapter 3: Auteur Rise</h2>
     <div class="text">
       <p>
-        As I stepped into the 1960s, the atmosphere in Paris was electrifying. Cinema was undergoing a transformation, moving away from the formulaic productions of Hollywood’s Golden Age toward a more personal and artistic expression. This was the era of the auteur, a time when directors like François Truffaut, Jean-Luc Godard, and Federico Fellini revolutionized storytelling by asserting themselves as the primary creative force behind their films. Inspired by post-war existentialism and countercultural movements, filmmakers began exploring themes of identity, morality, and rebellion.
-I attended a screening of Breathless, one of the defining works of the French New Wave, and was struck by its unconventional editing and raw, improvisational style. The jump cuts and fragmented narrative felt fresh and exciting, as if the film itself were alive and unpredictable. Later, in a smoky Parisian café, I joined a lively debate between cinephiles discussing the auteur theory and its implications for the future of cinema. Meeting Jean-Luc Godard was a highlight—he explained his belief that films should reflect the director’s personal vision and challenge traditional conventions.
-My journey continued to Tokyo, where I observed Akira Kurosawa on the set of Yojimbo. His meticulous approach to every detail, from the choreography of fight scenes to the positioning of the camera, was awe-inspiring. Kurosawa’s ability to blend traditional Japanese storytelling with universal themes of honor and survival showed me how auteurs could transcend cultural boundaries. In Italy, I attended a screening of Fellini’s La Dolce Vita, where the dreamy, episodic structure captivated audiences and redefined cinematic narrative.
-In Hollywood, the influence of the auteur movement was also being felt. Directors like Alfred Hitchcock and Stanley Kubrick were pushing the boundaries of genre and visual storytelling, while method acting by stars like Marlon Brando and James Dean brought a new level of emotional depth to performances. Films like Rebel Without a Cause and 2001: A Space Odyssey reflected the social and technological anxieties of the era.
-As I gathered data, I noted how narratives became more complex, characters more flawed, and themes more daring. This era transformed cinema into an art form that mirrored the complexities of the human experience. It was a time of rebellion and innovation, where directors redefined the rules and inspired audiences to see the world—and themselves—differently.
+        The group shifted their attention to Najmeddine, eager to hear about his journey through the transformative period of 1950–1970. Lucas leaned forward, starting the conversation. <br>
+        - Lucas: "Najmeddine, the data shows a shift toward more artistic and unconventional filmmaking during this time. What was it like to experience it firsthand?" <br>
+        - Najmeddine smiled, leaning back as he began his story. “It was incredible to see this evolution unfold. I found myself in Paris in the early 1960s, where the air buzzed with creative rebellion. I attended a screening of Breathless, and it was unlike anything I’d ever seen—improvised dialogue, jump cuts, handheld cameras. Jean-Luc Godard, who directed the film, joined a discussion afterward in a smoky café. He talked about how he wanted to break free from the constraints of traditional storytelling. It wasn’t just talk—our data shows how the average number of cuts per film increased during this period, reflecting this newfound energy.”
+          Elyes: "And how did these films perform? Did audiences embrace this new style?" <br>
+        - “Not immediately,” Najmeddine admitted, gesturing toward a plot on the screen. “The data reveals that these auteur-driven films didn’t dominate the box office initially, but their impact was undeniable. For instance, Breathless didn’t rake in massive earnings, but its IMDb ratings soared over time, and its influence on future directors is visible in the increasing complexity of film narratives during the 1970s. But it wasn’t just France. I traveled to Tokyo and watched Akira Kurosawa direct Seven Samurai. Seeing his precision was awe-inspiring. Kurosawa’s films struck a perfect balance between commercial success and artistic vision, something reflected in his consistently high ratings and box office figures in our dataset.” <br>
+        - Myriam: "What about Hollywood? Did it feel isolated from these movements, or did it adapt?" <br>
+        - Najmeddine pointed to a chart displaying genre trends in Hollywood. “Hollywood was slower to adapt, but it eventually followed suit. I visited a set in Los Angeles where Stanley Kubrick was filming Dr. Strangelove. It was clear that Hollywood was learning from the international scene. Directors like Kubrick and Hitchcock started crafting films that were more introspective and daring, while actors like Marlon Brando brought method acting into the mainstream, adding emotional depth. Our keyword analysis shows a spike in films addressing themes like war, identity, and rebellion during this time, mirroring the societal upheavals of the civil rights movement and the Vietnam War.” He leaned forward, voice filled with excitement. “But what struck me most was how this era set the stage for global storytelling. Italian Neorealism’s raw authenticity, the French New Wave’s stylistic daring, and Kurosawa’s epic narratives didn’t just influence Hollywood—they reshaped global cinema. This period was a melting pot of ideas, and I was lucky to live through it while collecting the data that proves its transformative power.” 
+        The group nodded, captivated by Najmeddine’s story. “This era wasn’t just a shift,” he concluded. “It was a revolution. Directors were no longer just making movies—they were making art, statements, and history.”
 
       </p>
-    
+     
 
     </div>
 
@@ -1476,11 +1446,16 @@ As I gathered data, I noted how narratives became more complex, characters more 
     <h2 class="centered-heading-Title">Chapter 4: Global Blockbusters</h2>
     <div class="text">
       <p>
-        The 1970s marked the birth of the blockbuster era, and landing at the 1977 premiere of Star Wars felt like stepping into a cultural phenomenon. The crowd’s excitement was contagious, and as the Millennium Falcon roared across the screen, I understood why this film redefined success in the industry. The blockbuster wasn’t just a movie—it was an event, a shared experience that brought audiences together on a global scale.
-I had the privilege of speaking with George Lucas, who shared how he combined elements of mythology, cutting-edge special effects, and a gripping story to create a universe that resonated with audiences worldwide. This era saw the rise of directors like Steven Spielberg, whose film Jaws became the first summer blockbuster, revolutionizing the way movies were marketed and distributed. Later, on the set of Jurassic Park, I witnessed the seamless integration of animatronics and early CGI that brought dinosaurs to life. It was a technological marvel, showing how innovation could elevate storytelling.
-The blockbuster era wasn’t just about Hollywood. International cinema flourished, with directors like Wong Kar-wai, Abbas Kiarostami, and Satyajit Ray gaining global recognition. Their films offered unique cultural perspectives, enriching the cinematic landscape. In Hong Kong, I watched a martial arts epic starring Jackie Chan and marveled at the choreography that blended action with humor, captivating audiences across continents.
-As I collected data, I saw how franchises like Star Wars and Indiana Jones dominated the box office, setting the stage for the sequel culture that still defines the industry. Marketing campaigns became more sophisticated, with merchandise and cross-media tie-ins turning films into global brands. But this era wasn’t just about spectacle—directors like Martin Scorsese and Quentin Tarantino used the blockbuster format to tell deeply personal and socially conscious stories.
-The blockbuster era was a testament to cinema’s power as both art and commerce. It showed me how films could connect people across cultures, creating shared experiences that transcended language and geography. This was cinema at its most expansive, a celebration of storytelling on a grand scale.
+        The group turned to Elyes, who had explored the blockbuster-dominated era of 1970–2000. Myriam leaned forward, eager to start. <br>
+      - Myriam: "Elyes, the data shows an explosion of blockbusters during this era. What was it like to see this unfold in person?" <br>
+      - Elyes grinned, his excitement obvious. “It was like stepping into a cultural phenomenon. I arrived at the 1977 premiere of Star Wars, and the energy was electric. People were lined up around the block, dressed as characters they hadn’t even seen yet! Watching the Millennium Falcon soar on the big screen was unforgettable. George Lucas spoke passionately afterward about combining mythological storytelling with groundbreaking special effects. The data backs this up—our analysis shows that the 1970s saw a steep rise in films using advanced special effects, coinciding with the development of CGI in the late 1980s and early 1990s. Star Wars wasn’t just a movie—it was a global event that set the template for modern franchises.” <br>
+      - Lucas: "Was this shift purely about spectacle, or were there deeper trends in storytelling?" <br>
+      - “It wasn’t just spectacle,” Elyes replied, pointing to a graph on the screen showing genre diversification. “While action and sci-fi dominated box office charts, directors like Spielberg and Cameron were creating stories with emotional depth. I visited the set of Jurassic Park in 1993 and saw the perfect blend of cutting-edge animatronics and a compelling narrative. Spielberg explained how he used the latest technology to serve the story, not overshadow it. The data reflects this balance—our analysis shows that films combining high production values with strong narratives had significantly higher IMDb ratings and longer-lasting cultural impact. For example, E.T. and Titanic weren’t just blockbusters—they were deeply emotional experiences.” <br>
+      - Najmeddine: "What about international cinema? Did Hollywood overshadow it, or did other regions thrive during this time?" <br>
+      - “Hollywood dominated commercially” Elyes admitted, pulling up a pie chart showing global revenue shares, “but international cinema carved out its own space. I spent time in Hong Kong, watching Jackie Chan film Police Story. His combination of martial arts and humor created a unique genre that resonated worldwide. The data confirms this—international films like Crouching Tiger, Hidden Dragon achieved both critical and commercial success during the late 1990s. Meanwhile, auteurs like Abbas Kiarostami in Iran and Wong Kar-wai in Hong Kong brought visually stunning and emotionally rich films to the global stage. While Hollywood was expanding through franchises, these directors focused on storytelling that reflected their cultural identities.” <br>
+      - Myriam: "How did franchises take over during this period? The data shows a significant trend in sequels and sagas." <br>
+      - Elyes pointed to another plot, highlighting a sharp rise in sequel production over time. “You’re absolutely right. Franchises became the backbone of the industry during this era. After the success of Star Wars, studios realized the value of creating long-lasting universes. We saw this with Indiana Jones, The Terminator, and later Harry Potter. Sequels weren’t just about cashing in—they built immersive worlds that kept audiences coming back. Our sentiment analysis from IMDb reviews even shows increased fan loyalty for these franchises, with viewers expressing excitement for continuity and character development.” <br>
+      - Elyes leaned back, his voice tinged with awe. “This era was about scale and connection. Blockbusters united global audiences like never before, creating shared cultural moments. At the same time, international cinema reminded us that storytelling could be intimate and deeply personal. The data we collected shows this duality—cinema was both universal and uniquely local, a balance that shaped the industry as we know it today.” <br>
 
       </p>
     
@@ -1498,10 +1473,19 @@ The blockbuster era was a testament to cinema’s power as both art and commerce
     <h2 class="centered-heading-Title">Chapter 5: Digital Diversity</h2>
     <div class="text">
       <p>
-        Entering the digital era of cinema was like stepping into a world where the possibilities felt limitless. On the set of Avatar, James Cameron explained how motion-capture technology allowed actors to become Na’vi, bringing the world of Pandora to life in stunning detail. Watching the process unfold, I was struck by how digital tools had transformed filmmaking, enabling stories that were previously unimaginable.
-Streaming platforms like Netflix were just beginning to disrupt traditional cinema, and I visited their headquarters to see how algorithms were reshaping audience consumption. Independent filmmakers at Sundance shared how crowdfunding and digital platforms gave them the freedom to tell diverse and personal stories. Films like Slumdog Millionaire and 12 Years a Slave reflected this era’s growing demand for representation and inclusivity, addressing global issues through unique cultural lenses.
-Social media had also revolutionized marketing. I observed how trailers went viral, sparking fan theories that shaped narratives before films even premiered. Data analysis revealed how filmmakers used audience insights to craft content that resonated globally. As I gathered data, I saw how the digital age democratized cinema, making it more accessible and inclusive than ever.
-This era wasn’t just about technology—it was about storytelling evolving to meet the needs of a connected world. From blockbusters to indie films, cinema became a platform for diverse voices, ensuring its continued relevance in an ever-changing landscape. It was clear that the digital revolution had not only transformed filmmaking but had also redefined what cinema could mean to audiences worldwide.
+        The group turned to Lucas, who had explored the digital transformation of cinema from 2000 to 2015. Najmeddine, always curious, broke the silence. <br>
+
+      - Najmeddine: "Alright, Lucas, I have to ask—was it all about CGI and tech? I mean, did the storytelling take a backseat to the shiny visuals?"<br>
+      - Lucas chuckled. “It’s tempting to think that way, but no. Sure, tech was a game changer, but storytelling evolved with it. Take Avatar in 2009—the CGI was mind-blowing, but it worked because James Cameron used it to immerse you in a story that hit universal themes: love, conflict, environmentalism. We saw in the data that movies with high CGI budgets often correlated with strong audience engagement, but only when paired with well-rated storylines. Films like The Lord of the Rings trilogy are perfect examples—emotional depth, epic narratives, and cutting-edge visuals all rolled into one.”<br>
+      - Elyes: "But streaming exploded in this era, right? Did it change the game for good?" <br>
+      - Lucas leaned forward. “Absolutely. I visited Netflix during their early streaming days, and they were already mapping out how algorithms would predict what audiences wanted to watch. In the dataset, you can see a sharp rise in keywords like ‘streaming’ and ‘direct-to-consumer’ starting in the mid-2000s. Streaming democratized the industry. Small-budget films like Beasts of No Nation found audiences they’d never have reached through traditional distribution. Plus, the data shows an increase in independent productions with high ratings, indicating that streaming wasn’t just for popcorn flicks—it was a platform for creativity.” <br>
+      - Myriam: "What about diversity? The data showed more female directors and global stories during this period. Did you feel that shift?" <br>
+      - Lucas nodded enthusiastically. “Oh, for sure. I saw it firsthand at Sundance, where more films focused on underrepresented voices. One that stood out was 12 Years a Slave. It wasn’t just a critical success—it resonated globally, tackling systemic issues head-on. The correlation we found between diverse casts and higher IMDb ratings in this era backs this up. Audiences wanted stories that reflected the real world, and studios started to catch on. Even Marvel got in on it with films like Black Panther later in the decade. It was the beginning of real change.” <br>    
+      - Najmeddine: "But streaming data is all about bingeing, right? Was cinema losing its magic?" <br>
+      - Lucas smirked. “Not at all. If anything, it became more personal. Think about it—streaming gave people the freedom to explore niche genres they’d never touch in a theater. The correlation between streaming keywords and niche genres in the dataset shows this shift. And theaters weren’t dying either. Films like Inception drew people back for the shared, larger-than-life experience. The real magic was in how accessible cinema became—it went from being an event to being woven into everyday life.” <br>
+      - Lucas leaned back, smiling as the group nodded along. “This era was all about balance—big franchises and small indies, theater blockbusters and streaming gems. The data—and the stories—prove it: cinema didn’t just adapt, it thrived.” <br>
+
+       
       </p>
     
 
@@ -1526,6 +1510,80 @@ This era wasn’t just about technology—it was about storytelling evolving to 
   </div>
 
 </section>
+
+<section id="datasets" class="datasets-section">
+  <div class="container">
+      <h2 class="centered-heading-Title">Datasets</h2>
+      <div class="text">
+          <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance. Below, we introduce the two datasets we will use:</p>
+      </div>
+      <div class="dataset-grid">
+          <div class="dataset-column cmu">
+              <h3>CMU Movie Summary Corpus</h3>
+              <div class="dataset-info">
+                  <p>Created by researchers at Carnegie Mellon University, this dataset contains metadata for 42,306 movies, including:</p>
+                  <h4>Metadata Provided:</h4>
+                  <ul>
+                      <li>Box-office revenue</li>
+                      <li>Genre(s)</li>
+                      <li>Release date</li>
+                      <li>Runtime</li>
+                      <li>Language(s)</li>
+                      <li>Country of origin</li>
+                  </ul>
+                  <h4>Actor and Character Information:</h4>
+                  <ul>
+                      <li>Character names</li>
+                      <li>Actor details (name, gender, age, height, ethnicity)</li>
+                  </ul>
+                  <h4>Supplementary Data:</h4>
+                  <ul>
+                      <li>Processed summaries using Stanford CoreNLP</li>
+                      <li>Named entity recognition (NER)</li>
+                      <li>Coreference resolution</li>
+                  </ul>
+                  <div class="source">
+                      <p>Source: <a href="http://www.cs.cmu.edu/~ark/personas/">CMU Movie Summary Corpus</a></p>
+                  </div>
+              </div>
+          </div>
+          <div class="dataset-column imdb">
+              <h3>IMDb Datasets</h3>
+              <div class="dataset-info">
+                  <p>Comprehensive movie information from IMDb, including:</p>
+                  <h4>Key Files:</h4>
+                  <ul>
+                      <li>title.basics.tsv.gz
+                          <span>Movie metadata, titles, genres, release years, runtime</span>
+                      </li>
+                      <li>title.ratings.tsv.gz
+                          <span>IMDb ratings and vote counts</span>
+                      </li>
+                  </ul>
+                  <h4>Analysis Capabilities:</h4>
+                  <ul>
+                      <li>Audience ratings correlation with success</li>
+                      <li>Localization strategies impact</li>
+                      <li>Genre popularity trends</li>
+                      <li>Movie reach and revenue patterns</li>
+                  </ul>
+                  <div class="source">
+                      <p>Source: <a href="https://datasets.imdbws.com/">IMDb Data Files</a></p>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+      <br>
+      <h3 class="centered-heading-SubTitle"> Simple Analysis of our datasets</h3>
+      <div class="text">
+          <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance.</p>
+      </div>
+      
+
+
+  </div>
+</section>
   
 
 
@@ -1549,27 +1607,48 @@ This era wasn’t just about technology—it was about storytelling evolving to 
     });
   </script>
 
-  <!-- Plotly Library -->
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-<!-- JavaScript to Render the Chart -->
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var data = [{
-      x: ['Action', 'Drama', 'Comedy', 'Horror'],
-      y: [500, 700, 300, 150],
-      type: 'bar'
-    }];
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const section = document.querySelector(this.getAttribute('href'));
+          section.scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+  });
 
-    var layout = {
-      title: 'Revenue by Genre',
-      xaxis: { title: 'Genre' },
-      yaxis: { title: 'Revenue (in millions)' }
-    };
-
-    Plotly.newPlot('genre-chart', data, layout);
-  });             
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation items
+    const navItems = document.querySelectorAll('.nav-item a');
+    
+    // Add click event listener to each nav item
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor behavior
+            
+            // Get the target section id from the href
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            // Scroll to the target section smoothly
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Optional: Add active class to current nav item
+            navItems.forEach(nav => nav.parentElement.classList.remove('active'));
+            this.parentElement.classList.add('active');
+        });
+    });
+});
   </script>
+
+  
+
+  <!-- Plotly Library -->
+
 
   
 
