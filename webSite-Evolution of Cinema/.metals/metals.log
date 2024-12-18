@@ -486,3 +486,16 @@ coursierapi.error.SimpleResolutionError$1: Error downloading org.virtuslab.scala
 	at java.lang.Thread.run(Thread.java:833)
 
 2024.12.18 12:23:54 INFO  no build target found for /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc. Using presentation compiler with project's scala-library version: 3.3.4
+2024.12.18 13:06:51 WARN  no build target for: /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc
+2024.12.18 13:06:52 INFO  no build target found for /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc. Using presentation compiler with project's scala-library version: 3.3.4
+2024.12.18 13:06:52 INFO  no build target found for /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc. Using presentation compiler with project's scala-library version: 3.3.4
+2024.12.18 13:06:52 INFO  no build target found for /Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution of Cinema/webSite-Evolution%20of%20Cinema.worksheet.sc. Using presentation compiler with project's scala-library version: 3.3.4
+[31merror[39m: webSite-Evolution%20of%20Cinema.worksheet.sc:1:1: 
+Not found: nd - did you mean ne? or perhaps nn?
+nd
+^^
+2024.12.18 13:06:53 INFO  file:///Users/lulu/Dropbox/MS1/ada-2024-project-melyn/webSite-Evolution%20of%20Cinema/webSite-Evolution%2520of%2520Cinema.worksheet.sc:1:1: stale mdoc error:
+Not found: nd - did you mean ne? or perhaps nn?
+
+^
+2024.12.18 13:06:53 INFO  time: evaluated worksheet 'webSite-Evolution%20of%20Cinema.worksheet.sc' in 1.23s
