@@ -630,9 +630,26 @@
   } 
 
   /* Datastory section Style */ 
+
+  
 .datastory-section{
-  padding: 4rem 0;
-  background-color: #f8f9fa;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.datastory-section-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 20px;
+            width: calc(100% - 40px); /* Ensures proper width considering margins */
+        }
+
+.datastory-section p{
+  line-height: 2;
+
 }
 
 /* Timeline */
@@ -749,6 +766,101 @@
             color: grey; /* You can also use hex (#808080), rgb, or hsl values for grey */
         }
 
+    /* Chapter 0 part*/ 
+  #chapter0 {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter0-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chapter0-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .chapter0-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .chapter0-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+
+
+  /* Chapter 1 Part*/
+
+  #chapter1 {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter1-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chapter1-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .chapter1-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .chapter1-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
   
 </style>
 
@@ -792,7 +904,7 @@
   <div class="hero-section">
     <div class="hero-content">
       <h1>The Evolution of Cinema</h1>
-      <h3>The Success Story Behind Box-Office Hits (1915-2015)</h3>
+      <h3>The Success Story Behind Movies Hits (1915-2015)</h3>
       <p>
         Our project examines the evolution of cinema, revealing trends in storytelling, audience preferences, and cultural impact over time.
       </p>
@@ -913,13 +1025,13 @@
         </div>
   </section>
 
-  <section id="datastory" class="datastory-section">
-    <div class="container">
+  <section id="chapter0">
+    <div class="chapter0-content">
         <h2 class="centered-heading-Title">Chapter 0: The Beginning</h2>
         <div class="text">
             <p><span class="grey-italic">Challenge:</span></p>
             <p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At the prestigious École Polytechnique Fédérale de Lausanne (EPFL), nestled in the serene Swiss city of Lausanne, five students shared an unlikely passion: cinema. Although they were studying engineering and science, Lucas, Myriam, Najmeddine, Elyes, and Yassine found solace in their ADA course, led by the eccentric Professor Allocio, a woman known for her unorthodox teaching methods. One late afternoon, as sunlight streamed through the large glass windows of the Rolex Learning Center, Professor Allocio gave her class an extraordinary challenge: “Your final project is to explore the evolution of cinema from 1915 to 2015. But don’t just present it—make it extraordinary. Surprise me.”
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At the prestigious École Polytechnique Fédérale de Lausanne (EPFL), nestled in the serene Swiss city of Lausanne, five students shared an unlikely passion: cinema. Although they were studying engineering and science, Lucas, Myriam, Najmeddine, Elyes, and Yassine found solace in their ADA course, led by the eccentric Professor Greenwood, a woman known for her unorthodox teaching methods. One late afternoon, as sunlight streamed through the large glass windows of the Rolex Learning Center, Professor Greenwood gave her class an extraordinary challenge: “Your final project is to explore the evolution of cinema from 1915 to 2015. But don’t just present it—make it extraordinary. Surprise me.”
             </p>
 
             <p><span class="grey-italic"><br>Brainstorming:</span></p>
@@ -941,16 +1053,42 @@
 
                 - Myriam leaned in, her voice unwavering. “If we don’t take risks, we’ll never create something truly groundbreaking. Isn’t that what cinema teaches us—to dream big?”<br>
 
-                After days of debate, the group made their decision. They would use Elyes’ ChronoPorteur to travel to five pivotal moments in the history of cinema. They spent a week fine-tuning the machine, adjusting its parameters to minimize risks.
+                After days of debate, the group made their decision. They would use Elyes’ ChronoPorteur to travel to five pivotal moments in the history of cinema. They spent a week fine-tuning the machine, adjusting its parameters to minimize risks.<br>
+
+                But as they finalized their plans, a new idea emerged. “What if,” Lucas suggested, “instead of traveling together, we each explore one of the five eras? It would save time and allow us to focus deeply on each period.”<br>
+
+                The group exchanged thoughtful glances. <br><br>
+                   
+                  - Myriam immediately claimed The Silent Era (1915–1930), eager to witness the birth of cinema.<br>
+                  - Yassine jumped at the chance to explore The Golden Age (1930–1950), excited to see the rise of Hollywood’s grandeur. <br>
+                  - Najmeddine, intrigued by creative rebellion, chose The Auteur Rise (1950–1970).<br>
+                  - Elyes, fascinated by technological leaps, wanted to dive into Global Blockbusters (1970–2000).<br>
+                  - Lucas, ever practical, took Digital Diversity (2000–2015), curious to analyze the data-driven transformations of modern filmmaking.<br><br>
+              
+                    
+                    
+                
+                - “Alright,” Elyes said, a mix of excitement and nerves in his voice. “Five eras, five explorers. We’ll regroup once we’ve gathered enough data to tell the story of cinema’s evolution.” <br><br>
+
+                With a final review of their plan, the group stepped up to the ChronoPorteur, ready to leap into their individual journeys through time. </p>
+
+                <p><span class="grey-italic"><br>The Homecoming: <br> </span></p>
+
+                <p> Later, the ChronoPorteur hummed as the group returned to the lab, each carrying data from their era. Myriam smiled, holding her notes on the Silent Era. <br>
+
+                - “We’ve got everything—genres, runtimes, audience insights.”<br>
+
+                - Yassine nodded. “From blockbusters to auteurs, it’s all here.”<br>
+
+                - Elyes looked at the piles of data and grinned. “Now, let’s analyze it and tell the story of cinema’s evolution.”
             </p>
         </div>
-    </div>
     <div class="timeline">
         <!-- Chapter 1 -->
         <div class="timeline-period timeline-left">
             <div class="timeline-content">
                 <!--<div class="guide">Guide : Emma, passionnée de cinéma muet</div>-->
-                <h2><span class="years">1915-1930</span> : Silent Films</h2>
+                <h2><span class="years">1915-1930</span> : The Silent Era</h2>
                 <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
                 <!--
                 <ul class="timeline-factors">
@@ -966,7 +1104,7 @@
         <div class="timeline-period timeline-right">
             <div class="timeline-content">
                 <!--<div class="guide">Guide : Lucas, expert en effets spéciaux</div>-->
-                <h2><span class="years">1930-1950:</span> Studio Glory</h2>
+                <h2><span class="years">1930-1950:</span> Hollywood's Golden Age</h2>
                 <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
                 <!--
                 <ul class="timeline-factors">
@@ -1026,7 +1164,25 @@
         </div>
     </div>
 </section>
-    
+
+<section id="chapter1">
+  <div class="chapter1-content">
+    <h2 class="centered-heading-Title">Chapter 1: The Silent Era</h2>
+    <div class="text">
+      
+
+
+
+
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
   
 
 
