@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Evolution of Cinema</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <style>
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  /* Button Styling */
+  
+
+  .menu-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+  }
+
+  .menu {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #000000;
+      width: fit-content;
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+
+  .menu a {
+      text-decoration: none;
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+  }
+
+  .menu .link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 36px;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .menu .link::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #3498db;
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .menu .link svg {
+      width: 14px;
+      height: 14px;
+      fill: #000000;
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .menu .item {
+      position: relative;
+  }
+
+  .menu .item .submenu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 100%;
+      border-radius: 0 0 16px 16px;
+      right: 0;
+      width: 200px;
+      overflow: hidden;
+      border: 1px solid #cccccc;
+      background-color: white;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 1;
+      pointer-events: none;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  .menu .item:hover .submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+      border-top: transparent;
+      border-color: black;
+  }
+
+  .menu .item:hover .link {
+      color: #ffffff;
+      border-radius: 16px 16px 0 0;
+  }
+
+  .menu .item:hover .link::after {
+      transform: scaleX(1);
+      transform-origin: right;
+  }
+
+  .menu .item:hover .link svg {
+      fill: #ffffff;
+      transform: rotate(-180deg);
+  }
+
+  .submenu .submenu-item {
+      width: 100%;
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .submenu .submenu-link {
+      display: block;
+      padding: 12px 24px;
+      width: 100%;
+      position: relative;
+      text-align: center;
+      transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .submenu .submenu-item:last-child .submenu-link {
+      border-bottom: none;
+  }
+
+  .submenu .submenu-link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scaleX(0);
+      width: 100%;
+      height: 100%;
+      background-color: #3498db;
+      z-index: -1;
+      transform-origin: left;
+      transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .submenu .submenu-link:hover:before {
+      transform: scaleX(1);
+      transform-origin: right;
+  }
+
+  .submenu .submenu-link:hover {
+      color: #ffffff;
+  }
+
+
+  /* Navigation Bar Styles */
+  .nav-container {
+    position: sticky;
+    top: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-tabs {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .nav-item {
+    background-color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+  }
+
+  .nav-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .nav-item.active {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+  .nav-tabs .nav-item a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+  /* Hero Section Styles */
+  .hero-section {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+  }
+
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 5vw, 4rem);
+    max-width: 700px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: bold;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #222;
+  }
+
+  .hero-content h3 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: #3498db;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .hero-content .btn-primary {
+    text-decoration: none;
+    background-color: #000;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    align-self: flex-start;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border: none;
+  }
+
+  .hero-content .btn-primary:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .hero-image {
+    flex: 1;
+    position: relative;
+    min-height: 100%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .button:hover {
+    transform: translateX(-50%) translateY(5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .button:hover .svgIcon {
+    transition-duration: 0.3s;
+    transform: translateY(200%);
+  }
+
+  .button::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Intro";
+    color: #3498db;
+    font-size: 20px;
+  }
+
+  .button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition-duration: 0.3s;
+  }
+
+  .svgIcon {
+    width: 24px;
+    height: 24px;
+    transform: rotate(180deg);
+  }
+
+  .svgIcon path {
+    fill: #333;
+    transition: fill 0.3s ease;
+  }
+
+  .button:hover .svgIcon path {
+    fill: #666;
+  }
+
+  /* Introduction Section Styles */
+  #introduction {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .introduction-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .introduction-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .introduction-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .introduction-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+  @media (max-width: 968px) {
+    .hero-section {
+      flex-direction: column;
+    }
+
+    .hero-content {
+      padding: 2rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-content .btn-primary {
+      align-self: center;
+    }
+
+    .hero-image {
+      position: relative;
+      height: 50vh;
+    }
+
+    .hero-image img {
+      position: relative;
+    }
+
+    .nav-container {
+      padding: 10px;
+    }
+
+    .nav-item {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .nav-tabs {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+    }
+
+    
+    .introduction-content {
+      padding: 1.5rem;
+    }
+
+    .introduction-content h2 {
+      font-size: 1.75rem;
+    }
+
+    .introduction-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-image {
+      height: 40vh;
+    }
+  }
+
+/* Dataset section on the website */
+
+  @media (max-width: 768px) {
+      body {
+          padding: 15px;
+      }
+
+      h1 {
+          font-size: 2em;
+      }
+
+      h2 {
+          font-size: 1.5em;
+      }
+
+      h3 {
+          font-size: 1.2em;
+      }
+
+
+      .dataset-card {
+          padding: 15px;
+      }
+
+  }
+
+  .datasets-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+  }
+
+  .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+
+  .dataset-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+      .dataset-grid {
+          grid-template-columns: 1fr;
+      }
+  }
+
+  .dataset-column {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+
+  .dataset-column h3 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 0.5rem;
+  }
+
+  .dataset-column h4 {
+      color: #3498db;
+      margin: 1.5rem 0 0.75rem 0;
+  }
+
+  .dataset-info ul {
+      list-style-type: none;
+      padding-left: 0;
+  }
+
+  .dataset-info li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+  }
+
+  .dataset-info li:before {
+      content: "•";
+      color: #3498db;
+      position: absolute;
+      left: 0;
+  }
+
+  .dataset-info li span {
+      display: block;
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 0.25rem;
+  }
+
+  .source {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.9em;
+      color: #666;
+  }
+
+  .source a {
+      color: #3498db;
+      text-decoration: none;
+  }
+
+  .source a:hover {
+      text-decoration: underline;
+  }
+
+  .text {
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  padding: 0 20px;
+  }
+
+  .dataset-intro p {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  color: #1a365d;
+  margin: 0;
+  text-align: justify;
+  letter-spacing: 0.2px;
+  }  
+
+  .centered-heading-Title {
+  text-align: center;
+  color: #1a365d;
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  } 
+
+  .centered-heading-Title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #1a365d;    /* Même couleur que le titre */
+  margin: 0.5rem auto 0;
+  }
+
+  .centered-heading-SubTitle {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  } 
+
+  /* Datastory section Style */ 
+
+  
+.datastory-section{
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.datastory-section-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 20px;
+            width: calc(100% - 40px); /* Ensures proper width considering margins */
+        }
+
+.datastory-section p{
+  line-height: 2;
+
+}
+
+/* Timeline */
+.timeline {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  }
+
+  .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #333;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+  .timeline-period {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      margin: 20px 0;
+  }
+
+  .timeline-period::after {
+    content: '';
+  position: absolute;
+  width: 24px; /* Ajusté */
+  height: 24px; /* Ajusté */
+  background-color: white;
+  border: 3px solid #3498db; /* Bordure plus fine */
+  border-radius: 50%;
+  z-index: 1;
+  top: calc(50% + 27px); /* Ajusté pour le positionnement vertical */
+  }
+
+  .timeline-left {
+      left: 0;
+  }
+
+  .timeline-right {
+      left: 50%;
+  }
+
+  .timeline-left::after {
+      right: -12px;
+  }
+
+  .timeline-right::after {
+      left: -12px;
+  }
+
+  .timeline-content {
+      padding: 20px;
+      background-color: white;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .timeline-content h2 {
+      color: #333;
+      margin-bottom: 10px;
+  }
+
+  .timeline-content .years {
+      color: #3498db;
+      font-weight: bold;
+  }
+
+  .guide {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 10px;
+  }
+
+  .timeline-factors {
+      margin-top: 10px;
+      padding-left: 20px;
+  }
+
+  .timeline-factors li {
+      margin: 5px 0;
+      color: #555;
+  }
+
+  @media screen and (max-width: 600px) {
+      .timeline::after {
+          left: 25px;
+      }
+
+      .timeline-period {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+      }
+
+      .timeline-period::after {
+          left: 15px;
+      }
+
+      .timeline-right {
+          left: 0;
+      }
+  }
+
+  /* Make the text itlic and grey (useful for different steps of the chapter 0 */ 
+  .grey-italic {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 17px;
+            color: grey; /* You can also use hex (#808080), rgb, or hsl values for grey */
+        }
+
+    /* Chapter 0 part*/ 
+  #chapter0 {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter0-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chapter0-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .chapter0-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .chapter0-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+
+
+  /* Chapter 1 Part*/
+
+  #chapter1 {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter1-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chapter1-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .chapter1-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .chapter1-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+/* Chapter 2 Part*/
+
+#chapter2 {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter2-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chapter2-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .chapter2-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .chapter2-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+  /* Chapter3 Part*/
+
+#chapter3 {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter3-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chapter3-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .chapter3-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .chapter3-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+  /* Chapter4 Part*/
+
+#chapter4 {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter4-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chapter4-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .chapter4-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .chapter4-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+  /* Chapter5 Part*/
+
+#chapter5 {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chapter5-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chapter5-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .chapter5-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .chapter5-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+  /* Conclusion Part*/
+
+#conclusion {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .conclusion-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .conclusion-content h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .conclusion-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #1a365d;
+    margin: 0.5rem auto 0;
+  }
+
+  .conclusion-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+    margin: 0;
+  }
+
+
+</style>
+
+
+
+
+
+
+
+
+      
+</head>
+<body>
+  <div class="header">
+    <div class="menu-container">
+        <ul class="menu">
+            <li class="item">
+                <a href="#" class="link">
+                    Our Datasets
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M12 16l-6-6h12z"/>
+                    </svg>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="http://www.cs.cmu.edu/~ark/personas/" class="submenu-link">CMU Movies</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://datasets.imdbws.com/" class="submenu-link">IMDb Ratings</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.kaggle.com/datasets/bls/consumer-price-index?resource=download" class="submenu-link">Consumer Price</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div> 
+
+    <!-- Hero Section-->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>The Evolution of Cinema</h1>
+      <h3>The Success Story Behind Movies Hits (1915-2015)</h3>
+      <p>
+        Our project examines the evolution of cinema, revealing trends in storytelling, audience preferences, and cultural impact over time.
+      </p>
+      <button onclick="scrollToIntroduction()" class="btn-primary">Ready to explore? 😊</button>
+    </div>
+    <div class="hero-image">
+      <img src="assets/img/2024-12-14 10.35.44.png" alt="Cinema" loading="lazy">
+    </div>
+    <button class="button" onclick="scrollToIntroduction()">
+      <svg class="svgIcon" viewBox="0 0 384 512">
+        <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+      </svg>
+    </button>
+  </div>
+
+  
+
+  <nav class="nav-container">
+    <ul class="nav-tabs">
+        <li class="nav-item"><a href="#datasets">Datasets</a></li>
+        <li class="nav-item"><a href="#chapter0">Chapter 0</a></li>
+        <li class="nav-item"><a href="#chapter1">Chapter 1</a></li>
+        <li class="nav-item"><a href="#chapter2">Chapter 2</a></li>
+        <li class="nav-item"><a href="#chapter3">Chapter 3</a></li>
+        <li class="nav-item"><a href="#chapter4">Chapter 4</a></li>
+        <li class="nav-item"><a href="#chapter5">Chapter 5</a></li>
+        <li class="nav-item"><a href="#conclusion">The End</a></li>
+    </ul>
+</nav>
+
+  <section id="introduction">
+    
+    <div class="introduction-content">
+      <h2>Introduction</h2>
+      <p>
+        Cinema has long been a mirror to society, reflecting cultural shifts, technological breakthroughs, and audience preferences. Over the past century, the film industry has transformed dramatically, from silent films in the early 20th century to the CGI-heavy blockbusters of today. These changes have not only redefined the art of storytelling but also reshaped the business of filmmaking, offering unique insights into what drives a movie’s success.
+
+      <strong>The Evolution of Cinema: The Success Story Behind Box-Office Hits (1915–2015)  </strong> explores the critical factors that influenced the success of films during this transformative period. By examining key elements such as genre trends, release schedules, star power, and localization strategies, this project investigates how filmmakers and studios have adapted to the changing tastes of audiences and the emergence of new markets. From the golden age of Hollywood to the global dominance of franchises, this study traces the trajectory of cinema as both an art form and a global industry.
+        
+        Through a data-driven analysis of box-office trends spanning 100 years, we aim to uncover the patterns that define cinematic success. What genres have stood the test of time? How has technology influenced storytelling and audience engagement? What role do international markets and localization play in shaping a film’s global appeal? By answering these questions, this project offers a deeper understanding of the intersection between creativity, commerce, and culture in the world of cinema.
+      </p>
+    </div>
+    </section>
+
+
+
+  <section id="chapter0">
+    <div class="chapter0-content">
+        <h2 class="centered-heading-Title">Chapter 0: The Beginning</h2>
+        <div class="text">
+            <p><span class="grey-italic">Challenge:</span></p>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;At the prestigious École Polytechnique Fédérale de Lausanne (EPFL), nestled in the serene Swiss city of Lausanne, five students shared an unlikely passion: cinema. Although they were studying engineering and science, Lucas, Myriam, Najmeddine, Elyes, and Yassine found solace in their ADA course, led by the eccentric Professor Greenwood, a woman known for her unorthodox teaching methods. One late afternoon, as sunlight streamed through the large glass windows of the Rolex Learning Center, Professor Greenwood gave her class an extraordinary challenge: “Your final project is to explore the evolution of cinema from 1915 to 2015. But don’t just present it—make it extraordinary. Surprise me.”
+            </p>
+
+            <p><span class="grey-italic"><br>Brainstorming:</span></p>
+
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It was Myriam, a passionate cinephile, who proposed an audacious idea during their brainstorming session. “What if,” she said, her voice brimming with excitement, “we didn’t just study the history of cinema… but lived it?”<br>
+                
+                The others exchanged skeptical glances, except for Elyes, the group’s tech guru and inventor. His eyes narrowed as he leaned forward. “Actually…” he began, “that might not be as crazy as it sounds.”<br>
+
+                Elyes explained that he had been working in secret on a groundbreaking project in one of the university’s lesser-known labs. His invention, called the ChronoPorteur, was an experimental device capable of manipulating spacetime. Initially intended for simulating historical scientific phenomena, he believed it could be modified to allow actual travel through time.<br>
+
+                - Najmeddine, the skeptic of the group, raised an eyebrow. “Wait, you’re saying we could actually go back in time?”<br>
+
+                - “Theoretically, yes,” Elyes replied. “But there’s a catch. If we interfere with historical events, we could alter the timeline in ways we can’t predict.”<br>
+
+                - Yassine, the group’s blockbuster enthusiast and eternal optimist, grinned. “So? Imagine standing on set with Chaplin, or watching Godard debate Truffaut, or even visiting Spielberg during Jaws! This could be legendary.”<br>
+
+                - Lucas, the cautious and pragmatic one, folded his arms. “And if something goes wrong? What if we can’t come back?”<br>
+
+                - Myriam leaned in, her voice unwavering. “If we don’t take risks, we’ll never create something truly groundbreaking. Isn’t that what cinema teaches us—to dream big?”<br>
+
+                After days of debate, the group made their decision. They would use Elyes’ ChronoPorteur to travel to five pivotal moments in the history of cinema. They spent a week fine-tuning the machine, adjusting its parameters to minimize risks.<br>
+
+                But as they finalized their plans, a new idea emerged. “What if,” Lucas suggested, “instead of traveling together, we each explore one of the five eras? It would save time and allow us to focus deeply on each period.”<br>
+
+                The group exchanged thoughtful glances. <br><br>
+                   
+                  - Myriam immediately claimed The Silent Era (1915–1930), eager to witness the birth of cinema.<br>
+                  - Yassine jumped at the chance to explore The Golden Age (1930–1950), excited to see the rise of Hollywood’s grandeur. <br>
+                  - Najmeddine, intrigued by creative rebellion, chose The Auteur Rise (1950–1970).<br>
+                  - Elyes, fascinated by technological leaps, wanted to dive into Global Blockbusters (1970–2000).<br>
+                  - Lucas, ever practical, took Digital Diversity (2000–2015), curious to analyze the data-driven transformations of modern filmmaking.<br><br>
+              
+                    
+                    
+                
+                - “Alright,” Elyes said, a mix of excitement and nerves in his voice. “Five eras, five explorers. We’ll regroup once we’ve gathered enough data to tell the story of cinema’s evolution.” <br><br>
+
+                With a final review of their plan, the group stepped up to the ChronoPorteur, ready to leap into their individual journeys through time. </p>
+
+                <p><span class="grey-italic"><br>The Homecoming: <br> </span></p>
+
+                <p> Later, the ChronoPorteur hummed as the group returned to the lab, each carrying data from their era. Myriam smiled, holding her notes on the Silent Era. <br>
+
+                - “We’ve got everything—genres, runtimes, audience insights.”<br>
+
+                - Yassine nodded. “From blockbusters to auteurs, it’s all here.”<br>
+
+                - Elyes looked at the piles of data and grinned. “Now, let’s analyze it and tell the story of cinema’s evolution.”
+            </p>
+        </div>
+    <div class="timeline">
+        <!-- Chapter 1 -->
+        <div class="timeline-period timeline-left">
+            <div class="timeline-content">
+                <!--<div class="guide">Guide : Emma, passionnée de cinéma muet</div>-->
+                <h2><span class="years">1915-1930</span> : The Silent Era</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div class="timeline-period timeline-right">
+            <div class="timeline-content">
+                <!--<div class="guide">Guide : Lucas, expert en effets spéciaux</div>-->
+                <h2><span class="years">1930-1950:</span> Hollywood's Golden Age</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <!-- Chapter 3 -->
+        <div class="timeline-period timeline-left">
+            <div class="timeline-content">
+                <!-- <div class="guide">Guide : Sofia, spécialiste du cinéma d'auteur</div>-->
+                <h2><span class="years">1950-1970:</span> Auteur Rise</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <!-- Chapter 4 -->
+        <div class="timeline-period timeline-right">
+            <div class="timeline-content">
+                <!-- <div class="guide">Guide : Marcus, fan de blockbusters</div>-->
+                <h2><span class="years">1970-2000:</span> Global Blockbusters</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+
+        <!-- Chapter 5 -->
+        <div class="timeline-period timeline-left">
+            <div class="timeline-content">
+                <h2><span class="years">2000-2015:</span> Digital Diversity</h2>
+                <!--<p>Dans le Paris bouillonnant de la Nouvelle Vague, Sofia guide le groupe.</p>-->
+                <!--
+                <ul class="timeline-factors">
+                    <li>Émergence des cinémas nationaux</li>
+                    <li>Expérimentation artistique</li>
+                    <li>Démocratisation du cinéma</li>
+                </ul>
+                -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="chapter1">
+  <div class="chapter1-content">
+    <h2 class="centered-heading-Title">Chapter 1: The Silent Era</h2>
+    <div class="text">
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The group sat around a bright, modern table at the Rolex Learning Center, its open, airy design buzzing quietly with the energy 
+        of collaboration and curiosity. <br>
+        - Elyes, happy of his invention asked "How was it?"<br>
+        - Myriam smiled. “It was magical. Silent films ruled, telling stories through visuals and music. Chaplin made us laugh, Metropolis 
+        made us think, and filmmakers everywhere were innovating. However, everything changed in 1927 with The Jazz Singer, the first major
+        ‘talkie’. It completely transformed the industry...”<br>
+      </p>
+
+        <!-- Include the plot -->
+
+        <iframe src="plots/timeline_plot.html" width="800" height="600" frameborder="0"></iframe>
+    
+      <p>
+        Myriam gestured toward the plot on the screen, her voice filled with excitement. “Look at this,” she said, pointing to the sharp rise of silent films through the 1910s and 1920s.
+         “For most of this period, silent films completely ruled the industry, telling stories through visuals and music. But everything changed in 1927 with The Jazz Singer. You can see here,
+         ” she said, tracing the sudden drop, “how the introduction of sound transformed cinema. By 1928, Hollywood had fully converted to sound, and silent films practically disappeared overnight. 
+         It was the end of an era, but also the beginning of a new one that redefined storytelling forever.”<br>
+
+         Myriam paused, letting the significance of the plot sink in before continuing. “But it wasn’t just Hollywood adapting to this monumental shift,” she said, her tone thoughtful. “Around the world,
+          filmmakers were pushing boundaries in ways that redefined cinema as an art form. The World Cinema genre thrived during this period, not just because of the rise of talkies, but because of 
+          groundbreaking innovations and bold storytelling. Unique cinematic styles emerged—styles that challenged conventions and transformed how stories were told on screen.”<br>
+
+      </p>
+      <iframe src="plots/genres_plot.html" width="800" height="400" frameborder="0"></iframe>
+      <p>
+        Myriam smiled and pointed to the second plot now displayed on the screen. “And here’s something fascinating,” she said, gesturing to the bar chart. “Among the top 10 genres of this era, World Cinema
+         stands out with the highest average ratings. It wasn’t just about technical innovations—it was about storytelling that resonated deeply with audiences. Films like The Cabinet of Dr. Caligari or 
+         Metropolis pushed creative boundaries, delivering bold, innovative narratives that captured the imagination of viewers around the globe. This genre was a testament to how cinema was evolving into a 
+         universal language, even as sound began to reshape the industry.”<br>
+
+         Myriam transitioned seamlessly, pointing to a new plot now displayed beside the previous one. “While World Cinema boasted some of the highest-rated films, it’s important to see this in the context 
+         of production,” she explained, gesturing to the pie chart showing the global distribution of film production. “As you can see, the U.S. absolutely dominated movie production during this period, thanks
+          to the emergence of Hollywood as an industrial powerhouse. American studios were churning out films at an unprecedented rate, far outpacing other countries.”<br>
+
+         She paused, then added, “However, the late 1920s marked the beginning of something new. The rise of talkies didn’t just transform Hollywood—it also sparked the emergence of unique cinematic movements 
+         around the world, like German Expressionism. Each country began to develop its own film identity, producing movies in their native languages. But during this time, globalization was minimal—there were 
+         hardly any translations, and films largely stayed within their own borders.”<br>
+         
+         She leaned back, considering the data. “Because silent films dominated most of this era, language isn’t really an interesting feature to study—it’s mostly irrelevant before talkies. And even after their
+          emergence, language essentially mirrors country of origin, since each nation produced films in its own language with little international exchange.”<br>
+         
+         
+      </p>
+
+      <iframe src="plots/film_production_chapter2.html" width="800" height="400" frameborder="0"></iframe>
+
+    </div>
+  </div>
+</section>
+
+<section id="chapter2">
+  <div class="chapter2-content">
+    <h2 class="centered-heading-Title">Chapter 2: Hollywood's Golden Age</h2>
+    <div class="text">
+      <p>
+        The group continued their discussion, energized by Myriam’s passionate retelling of the Silent Era. Elyes turned to Yassine, curiosity in his voice. <br>
+
+      - Elyes: "So, Yassine, what made the Golden Age so groundbreaking? Was it just about sound and color?" <br>
+      - Yassine leaned forward, his excitement evident. “Sound and color were revolutionary, but it was the cultural impact that made this era truly golden. Films like Gone with the Wind and The Wizard of Oz redefined how stories were told, blending technical innovation with emotional depth. Gone with the Wind, for example, wasn’t just a cinematic masterpiece—it became a cultural phenomenon. Adjusted for inflation, its gross would be an astonishing $4.19 billion in 2022, making it the highest-grossing film of all time. It’s a testament to how these movies resonated with audiences on an unprecedented scale.” <br>
+      - Lucas: "How did the Great Depression and World War II shape the kinds of stories told during this period?" <br>
+      - “Greatly,” Yassine replied, gesturing to a chart on the screen. “During the Depression, cinema became a vital escape. Affordable tickets and uplifting musicals, like Top Hat, gave people a break from harsh realities. When World War II began, cinema shifted gears, becoming both entertainment and propaganda. Films like Casablanca inspired patriotism while addressing themes of sacrifice and unity. Studios collaborated with governments to create war-themed content that kept audiences engaged and informed, giving people hope during turbulent times.” <br>
+      - Myriam: "Was Hollywood the only key player, or did other countries make their mark?" <br> 
+      - “Hollywood dominated in scale,” Yassine explained, pointing to a global production chart, “but movements like Italian Neorealism emerged after the war, bringing raw, emotional storytelling to the forefront. Films like Bicycle Thieves depicted post-war struggles with a realism Hollywood didn’t often explore. In Japan, directors like Kurosawa began making their mark with films that blended cultural specificity and universal themes, laying the groundwork for global recognition. These movements expanded cinema’s creative scope beyond Hollywood, influencing how stories were told worldwide.”<br>
+      - Yassine leaned back, his voice confident. “The Golden Age was about innovation, resilience, and storytelling that united people across the globe. It wasn’t just an era of technical progress—it was cinema’s emotional and cultural awakening.  
+    </p>
+      <iframe src="plots/film_production_chapter2.html" width="800" height="4à00" frameborder="0"></iframe>
+
+
+
+    
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+<section id="chapter3">
+  <div class="chapter3-content">
+    <h2 class="centered-heading-Title">Chapter 3: Auteur Rise</h2>
+    <div class="text">
+      <p>
+        The group shifted their attention to Najmeddine, eager to hear about his journey through the transformative period of 1950–1970. Lucas leaned forward, starting the conversation. <br>
+        - Lucas: "Najmeddine, the data shows a shift toward more artistic and unconventional filmmaking during this time. What was it like to experience it firsthand?" <br>
+        - Najmeddine smiled, leaning back as he began his story. “It was incredible to see this evolution unfold. I found myself in Paris in the early 1960s, where the air buzzed with creative rebellion. I attended a screening of Breathless, and it was unlike anything I’d ever seen—improvised dialogue, jump cuts, handheld cameras. Jean-Luc Godard, who directed the film, joined a discussion afterward in a smoky café. He talked about how he wanted to break free from the constraints of traditional storytelling. It wasn’t just talk—our data shows how the average number of cuts per film increased during this period, reflecting this newfound energy.”
+          Elyes: "And how did these films perform? Did audiences embrace this new style?" <br>
+        - “Not immediately,” Najmeddine admitted, gesturing toward a plot on the screen. “The data reveals that these auteur-driven films didn’t dominate the box office initially, but their impact was undeniable. For instance, Breathless didn’t rake in massive earnings, but its IMDb ratings soared over time, and its influence on future directors is visible in the increasing complexity of film narratives during the 1970s. But it wasn’t just France. I traveled to Tokyo and watched Akira Kurosawa direct Seven Samurai. Seeing his precision was awe-inspiring. Kurosawa’s films struck a perfect balance between commercial success and artistic vision, something reflected in his consistently high ratings and box office figures in our dataset.” <br>
+        - Myriam: "What about Hollywood? Did it feel isolated from these movements, or did it adapt?" <br>
+        - Najmeddine pointed to a chart displaying genre trends in Hollywood. “Hollywood was slower to adapt, but it eventually followed suit. I visited a set in Los Angeles where Stanley Kubrick was filming Dr. Strangelove. It was clear that Hollywood was learning from the international scene. Directors like Kubrick and Hitchcock started crafting films that were more introspective and daring, while actors like Marlon Brando brought method acting into the mainstream, adding emotional depth. Our keyword analysis shows a spike in films addressing themes like war, identity, and rebellion during this time, mirroring the societal upheavals of the civil rights movement and the Vietnam War.” He leaned forward, voice filled with excitement. “But what struck me most was how this era set the stage for global storytelling. Italian Neorealism’s raw authenticity, the French New Wave’s stylistic daring, and Kurosawa’s epic narratives didn’t just influence Hollywood—they reshaped global cinema. This period was a melting pot of ideas, and I was lucky to live through it while collecting the data that proves its transformative power.” 
+        The group nodded, captivated by Najmeddine’s story. “This era wasn’t just a shift,” he concluded. “It was a revolution. Directors were no longer just making movies—they were making art, statements, and history.”
+
+      </p>
+     
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+<section id="chapter4">
+  <div class="chapter4-content">
+    <h2 class="centered-heading-Title">Chapter 4: Global Blockbusters</h2>
+    <div class="text">
+      <p>
+        The group turned to Elyes, who had explored the blockbuster-dominated era of 1970–2000. Myriam leaned forward, eager to start. <br>
+      - Myriam: "Elyes, the data shows an explosion of blockbusters during this era. What was it like to see this unfold in person?" <br>
+      - Elyes grinned, his excitement obvious. “It was like stepping into a cultural phenomenon. I arrived at the 1977 premiere of Star Wars, and the energy was electric. People were lined up around the block, dressed as characters they hadn’t even seen yet! Watching the Millennium Falcon soar on the big screen was unforgettable. George Lucas spoke passionately afterward about combining mythological storytelling with groundbreaking special effects. The data backs this up—our analysis shows that the 1970s saw a steep rise in films using advanced special effects, coinciding with the development of CGI in the late 1980s and early 1990s. Star Wars wasn’t just a movie—it was a global event that set the template for modern franchises.” <br>
+      - Lucas: "Was this shift purely about spectacle, or were there deeper trends in storytelling?" <br>
+      - “It wasn’t just spectacle,” Elyes replied, pointing to a graph on the screen showing genre diversification. “While action and sci-fi dominated box office charts, directors like Spielberg and Cameron were creating stories with emotional depth. I visited the set of Jurassic Park in 1993 and saw the perfect blend of cutting-edge animatronics and a compelling narrative. Spielberg explained how he used the latest technology to serve the story, not overshadow it. The data reflects this balance—our analysis shows that films combining high production values with strong narratives had significantly higher IMDb ratings and longer-lasting cultural impact. For example, E.T. and Titanic weren’t just blockbusters—they were deeply emotional experiences.” <br>
+      - Najmeddine: "What about international cinema? Did Hollywood overshadow it, or did other regions thrive during this time?" <br>
+      - “Hollywood dominated commercially” Elyes admitted, pulling up a pie chart showing global revenue shares, “but international cinema carved out its own space. I spent time in Hong Kong, watching Jackie Chan film Police Story. His combination of martial arts and humor created a unique genre that resonated worldwide. The data confirms this—international films like Crouching Tiger, Hidden Dragon achieved both critical and commercial success during the late 1990s. Meanwhile, auteurs like Abbas Kiarostami in Iran and Wong Kar-wai in Hong Kong brought visually stunning and emotionally rich films to the global stage. While Hollywood was expanding through franchises, these directors focused on storytelling that reflected their cultural identities.” <br>
+      - Myriam: "How did franchises take over during this period? The data shows a significant trend in sequels and sagas." <br>
+      - Elyes pointed to another plot, highlighting a sharp rise in sequel production over time. “You’re absolutely right. Franchises became the backbone of the industry during this era. After the success of Star Wars, studios realized the value of creating long-lasting universes. We saw this with Indiana Jones, The Terminator, and later Harry Potter. Sequels weren’t just about cashing in—they built immersive worlds that kept audiences coming back. Our sentiment analysis from IMDb reviews even shows increased fan loyalty for these franchises, with viewers expressing excitement for continuity and character development.” <br>
+      - Elyes leaned back, his voice tinged with awe. “This era was about scale and connection. Blockbusters united global audiences like never before, creating shared cultural moments. At the same time, international cinema reminded us that storytelling could be intimate and deeply personal. The data we collected shows this duality—cinema was both universal and uniquely local, a balance that shaped the industry as we know it today.” <br>
+
+      </p>
+    
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+<section id="chapter5">
+  <div class="chapter5-content">
+    <h2 class="centered-heading-Title">Chapter 5: Digital Diversity</h2>
+    <div class="text">
+      <p>
+        The group turned to Lucas, who had explored the digital transformation of cinema from 2000 to 2015. Najmeddine, always curious, broke the silence. <br>
+
+      - Najmeddine: "Alright, Lucas, I have to ask—was it all about CGI and tech? I mean, did the storytelling take a backseat to the shiny visuals?"<br>
+      - Lucas chuckled. “It’s tempting to think that way, but no. Sure, tech was a game changer, but storytelling evolved with it. Take Avatar in 2009—the CGI was mind-blowing, but it worked because James Cameron used it to immerse you in a story that hit universal themes: love, conflict, environmentalism. We saw in the data that movies with high CGI budgets often correlated with strong audience engagement, but only when paired with well-rated storylines. Films like The Lord of the Rings trilogy are perfect examples—emotional depth, epic narratives, and cutting-edge visuals all rolled into one.”<br>
+      - Elyes: "But streaming exploded in this era, right? Did it change the game for good?" <br>
+      - Lucas leaned forward. “Absolutely. I visited Netflix during their early streaming days, and they were already mapping out how algorithms would predict what audiences wanted to watch. In the dataset, you can see a sharp rise in keywords like ‘streaming’ and ‘direct-to-consumer’ starting in the mid-2000s. Streaming democratized the industry. Small-budget films like Beasts of No Nation found audiences they’d never have reached through traditional distribution. Plus, the data shows an increase in independent productions with high ratings, indicating that streaming wasn’t just for popcorn flicks—it was a platform for creativity.” <br>
+      - Myriam: "What about diversity? The data showed more female directors and global stories during this period. Did you feel that shift?" <br>
+      - Lucas nodded enthusiastically. “Oh, for sure. I saw it firsthand at Sundance, where more films focused on underrepresented voices. One that stood out was 12 Years a Slave. It wasn’t just a critical success—it resonated globally, tackling systemic issues head-on. The correlation we found between diverse casts and higher IMDb ratings in this era backs this up. Audiences wanted stories that reflected the real world, and studios started to catch on. Even Marvel got in on it with films like Black Panther later in the decade. It was the beginning of real change.” <br>    
+      - Najmeddine: "But streaming data is all about bingeing, right? Was cinema losing its magic?" <br>
+      - Lucas smirked. “Not at all. If anything, it became more personal. Think about it—streaming gave people the freedom to explore niche genres they’d never touch in a theater. The correlation between streaming keywords and niche genres in the dataset shows this shift. And theaters weren’t dying either. Films like Inception drew people back for the shared, larger-than-life experience. The real magic was in how accessible cinema became—it went from being an event to being woven into everyday life.” <br>
+      - Lucas leaned back, smiling as the group nodded along. “This era was all about balance—big franchises and small indies, theater blockbusters and streaming gems. The data—and the stories—prove it: cinema didn’t just adapt, it thrived.” <br>
+
+       
+      </p>
+    
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+<section id="conclusion">
+  <div class="conclusion-content">
+    <h2 class="centered-heading-Title">Conclusion </h2>
+    <div class="text">
+    
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+<section id="datasets" class="datasets-section">
+  <div class="container">
+      <h2 class="centered-heading-Title">Datasets</h2>
+      <div class="text">
+          <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance. Below, we introduce the two datasets we will use:</p>
+      </div>
+      <div class="dataset-grid">
+          <div class="dataset-column cmu">
+              <h3>CMU Movie Summary Corpus</h3>
+              <div class="dataset-info">
+                  <p>Created by researchers at Carnegie Mellon University, this dataset contains metadata for 42,306 movies, including:</p>
+                  <h4>Metadata Provided:</h4>
+                  <ul>
+                      <li>Box-office revenue</li>
+                      <li>Genre(s)</li>
+                      <li>Release date</li>
+                      <li>Runtime</li>
+                      <li>Language(s)</li>
+                      <li>Country of origin</li>
+                  </ul>
+                  <h4>Actor and Character Information:</h4>
+                  <ul>
+                      <li>Character names</li>
+                      <li>Actor details (name, gender, age, height, ethnicity)</li>
+                  </ul>
+                  <h4>Supplementary Data:</h4>
+                  <ul>
+                      <li>Processed summaries using Stanford CoreNLP</li>
+                      <li>Named entity recognition (NER)</li>
+                      <li>Coreference resolution</li>
+                  </ul>
+                  <div class="source">
+                      <p>Source: <a href="http://www.cs.cmu.edu/~ark/personas/">CMU Movie Summary Corpus</a></p>
+                  </div>
+              </div>
+          </div>
+          <div class="dataset-column imdb">
+              <h3>IMDb Datasets</h3>
+              <div class="dataset-info">
+                  <p>Comprehensive movie information from IMDb, including:</p>
+                  <h4>Key Files:</h4>
+                  <ul>
+                      <li>title.basics.tsv.gz
+                          <span>Movie metadata, titles, genres, release years, runtime</span>
+                      </li>
+                      <li>title.ratings.tsv.gz
+                          <span>IMDb ratings and vote counts</span>
+                      </li>
+                  </ul>
+                  <h4>Analysis Capabilities:</h4>
+                  <ul>
+                      <li>Audience ratings correlation with success</li>
+                      <li>Localization strategies impact</li>
+                      <li>Genre popularity trends</li>
+                      <li>Movie reach and revenue patterns</li>
+                  </ul>
+                  <div class="source">
+                      <p>Source: <a href="https://datasets.imdbws.com/">IMDb Data Files</a></p>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+      <br>
+      <h3 class="centered-heading-SubTitle"> Simple Analysis of our datasets</h3>
+      <div class="text">
+          <p>Our project leverages two comprehensive datasets to analyze the factors influencing box-office success for films released between 1915 and 2015. These datasets provide complementary information about movie characteristics, ratings, revenue, and metadata, enabling us to conduct an in-depth analysis of audience preferences, industry trends, and their impact on box-office performance.</p>
+      </div>
+      
+
+
+  </div>
+</section>
+  
+
+
+
+
+
+    
+
+
+
+  <script>
+    function scrollToIntroduction() {
+      document.getElementById('introduction').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const section = document.querySelector(this.getAttribute('href'));
+          section.scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all navigation items
+    const navItems = document.querySelectorAll('.nav-item a');
+    
+    // Add click event listener to each nav item
+    navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor behavior
+            
+            // Get the target section id from the href
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            // Scroll to the target section smoothly
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Optional: Add active class to current nav item
+            navItems.forEach(nav => nav.parentElement.classList.remove('active'));
+            this.parentElement.classList.add('active');
+        });
+    });
+});
+  </script>
+
+  
+
+  <!-- Plotly Library -->
+
+
+  
+
+  
+</body>
+</html>
