@@ -297,10 +297,10 @@ def plot_importance_per_period(df,model,target):
         
         # Define features and target
         if target == 'averageRating':
-            X_ = df_period.drop(columns=[target, 'Movie_box_office_revenue', 'Year_Interval', 'Year'])
+            X_ = df_period.drop(columns=[target, 'Movie_box_office_revenue', 'Year_Interval'])
             y_ = df_period[target]
         else:
-            X_ = df_period.drop(columns=[target, 'averageRating', 'Year_Interval', 'Year', 'Movie_box_office_revenue', 'cpi'])
+            X_ = df_period.drop(columns=[target, 'Movie_box_office_revenue', 'Year_Interval', 'cpi'])
             y_ = df_period[target]
         
         # Split data
