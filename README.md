@@ -55,6 +55,7 @@ We create a data story that tells a compelling narrative about the evolution of 
 
 
 ## Repository Structure :
+'''
 ├── data/                          # Directory for datasets and related files
 │   ├── .ipynb_checkpoints/        # Checkpoints for Jupyter notebooks
 │   ├── CMU/                       # CMU-specific data files
@@ -76,7 +77,7 @@ We create a data story that tells a compelling narrative about the evolution of 
 ├── pip_requirements.txt           # Python dependencies required for the project
 ├── .gitignore                     # Git ignore file
 └── README.md                      # Project documentation (this file)
-
+'''
 
 ## Team Organization
 - Elyes Trabelsi: Step 1 & 6 
