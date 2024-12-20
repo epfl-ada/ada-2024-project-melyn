@@ -54,8 +54,8 @@ We create a data story that tells a compelling narrative about the evolution of 
 - **Machine Learning:** We  use machine learning algorithms to predict rating and box office performances based on movie features, such as linear Regression, Ridge Regression, Random Forest, XGBoost, Bagging Regressor, Gradient Boosting and Decision Tree.
 
 
-## Repository Structure :
-'''
+## Repository Structure
+```
 ├── data/                          # Directory for datasets and related files
 │   ├── .ipynb_checkpoints/        # Checkpoints for Jupyter notebooks
 │   ├── CMU/                       # CMU-specific data files
@@ -77,7 +77,7 @@ We create a data story that tells a compelling narrative about the evolution of 
 ├── pip_requirements.txt           # Python dependencies required for the project
 ├── .gitignore                     # Git ignore file
 └── README.md                      # Project documentation (this file)
-'''
+```
 
 ## Team Organization
 - Elyes Trabelsi: Step 1 & 6 
