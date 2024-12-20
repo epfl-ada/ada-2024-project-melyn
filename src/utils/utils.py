@@ -3,6 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 pickle_folder = "../data/pickle/"
 
@@ -222,4 +225,91 @@ def top_n_total_revenue(feature, data, n=10):
     plt.tight_layout()
     
     return ax
+
+def compute_MSE_R2score(model,X_train,X_test,y_train,y_test):
+    """
+    Compute the RMSE, R2 score and the MAE for a given model.
+    Args:
+        model: Trained model.
+        X_train: Training features.
+        X_test: Testing features.
+        y_train: Training target.
+        y_test: Testing target.
+    Returns:
+        float: The RMSE score.
+        float: The R2 score.
+        float: The mean absolute error.
+    """
+    model_name = type(model).__name__
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+    abs_err = abs(y_test - y_pred)
+    print(f"\n{model_name} RMSE: ", np.sqrt(mse))
+    print(f"{model_name} R2: ", r2)
+    print(f"{model_name} Mean Absolute Error: ", abs_err.mean())
+    return np.sqrt(mse), r2 , abs_err.mean()
+
+def plot_feature_importance(model, X, top_n=25):
+    """
+    Plots the top N most important features for a given model.
+    Args:
+        model: Trained model with `feature_importances_` attribute.
+        X: DataFrame containing the features used for training the model.
+        top_n: Number of top features to display (default is 25).
+    Returns:
+        None
+    """
+    # Get feature importance for the model
+    importance_df = (
+        pd.DataFrame({'Feature': X.columns, 'Importance': model.feature_importances_})
+        .sort_values(by='Importance', ascending=False)
+        .head(top_n)
+    )
     
+    # Plot the feature importance for the model
+    plt.figure(figsize=(7, 5))
+    plt.barh(importance_df['Feature'], importance_df['Importance'], color='purple')
+    plt.gca().invert_yaxis()
+    plt.title(f'Top {top_n} Feature Importances')
+    plt.xlabel('Importance')
+    plt.ylabel('Features')
+    plt.tight_layout()
+    plt.show()
+
+def plot_importance_per_period(df,model,target):
+    """
+    Plot the feature importance for a given model for each period in the DataFrame.
+    Args:
+        df: DataFrame containing the features and target.
+        model: Trained model with `feature_importances_` attribute.
+        target: The target variable to predict.
+    Returns:
+        None
+    """
+    # Iterate through the unique periods in 'Year_interval'
+    for period in df['Year_Interval'].unique():
+        print(f"Analyzing period: {period}")
+        
+        # Filter the DataFrame for the current period
+        df_period = df[df['Year_Interval'] == period]
+        
+        # Define features and target
+        if target == 'averageRating':
+            X_ = df_period.drop(columns=[target, 'Movie_box_office_revenue', 'Year_Interval', 'Year'])
+            y_ = df_period[target]
+        else:
+            X_ = df_period.drop(columns=[target, 'averageRating', 'Year_Interval', 'Year', 'Movie_box_office_revenue', 'cpi'])
+            y_ = df_period[target]
+        
+        # Split data
+        X_train_, X_test_, y_train_, y_test_ = train_test_split(X_, y_, test_size=0.2, random_state=42)
+        
+        # Standardize features
+        scaler_ = StandardScaler()
+        X_train_scaled_ = scaler_.fit_transform(X_train_)
+        X_test_scaled_ = scaler_.transform(X_test_)
+
+        compute_MSE_R2score(model,X_train_scaled_,X_test_scaled_,y_train_,y_test_)
+        plot_feature_importance(model,X_)
