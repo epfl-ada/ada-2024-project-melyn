@@ -16,7 +16,7 @@
 </url>
 <url>
 <loc>/</loc>
-<lastmod>2024-12-20T10:19:55-05:00</lastmod>
+<lastmod>2024-12-20T11:16:38-05:00</lastmod>
 </url>
 <url>
 <loc>/plots/box_office_per_genre_country_chapter4.html</loc>
@@ -49,6 +49,10 @@
 <url>
 <loc>/plots/genre_correlation_chapter4.html</loc>
 <lastmod>2024-12-20T04:50:59-05:00</lastmod>
+</url>
+<url>
+<loc>/plots/genre_diversification_per_year_chapter3.html</loc>
+<lastmod>2024-12-20T11:15:18-05:00</lastmod>
 </url>
 <url>
 <loc>/plots/genre_diversification_per_yer_chapter3.html</loc>
@@ -84,7 +88,7 @@
 </url>
 <url>
 <loc>/plots/rise_of_languages_chapter3.html</loc>
-<lastmod>2024-12-20T03:34:25-05:00</lastmod>
+<lastmod>2024-12-20T11:13:08-05:00</lastmod>
 </url>
 <url>
 <loc>/plots/seasonal_release_chapter4.html</loc>
