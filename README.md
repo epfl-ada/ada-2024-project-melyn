@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This project investigates the evolution of key factors influencing box-office success for films released between 1915 and 2015, aiming to uncover how audience preferences and industry dynamics have transformed over the century. By analyzing a wide range of characteristics—such as genre, release timing (seasonality), localization strategies (e.g., number of translations and countries), and the age and gender of lead actors—we strive to understand their impact on film ratings, revenue and broader cinematic trends.
+This project investigates the evolution of key factors influencing the success for films released between 1915 and 2015, aiming to uncover how audience preferences and industry dynamics have transformed over the century. By analyzing a wide range of characteristics—such as genre, release timing (seasonality), localization strategies (e.g., number of translations and countries), and the age and gender of lead actors—we strive to understand their impact on film ratings, revenue and broader cinematic trends.
 
 Our study delves into five distinct historical periods (1915–1930, 1930–1950, 1950–1970, 1970–2000, and 2000–2015) to identify how shifts in these characteristics align with changes in commercial and critical success. We pay particular attention to trends in genre combinations, localization strategies and actor demographics. This comprehensive analysis reveals patterns that not only reflect the changing dynamics of cinema but also provide insights into the evolving preferences of audiences worldwide. By tracing these trends, this study aims to illuminate the factors that have driven the success of some of the most iconic films in history.
 
