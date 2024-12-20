@@ -1,3 +1,5 @@
+# The Evolution of Cinema : The Success Story Behind Movies Hits (1915-2015)
+
 ## Abstract
 
 This project investigates the evolution of key factors influencing box-office success for films released between 1915 and 2015, aiming to uncover how audience preferences and industry dynamics have transformed over the century. By analyzing a wide range of characteristics—such as genre, release timing (seasonality), localization strategies (e.g., number of translations and countries), and the age and gender of lead actors—we strive to understand their impact on film ratings, revenue and broader cinematic trends.
