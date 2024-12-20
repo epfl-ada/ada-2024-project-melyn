@@ -184,7 +184,8 @@
   }
 
 
-  .nav-container {
+  /* Navigation Bar Styles */
+.nav-container {
     position: sticky;
     top: 20px;
     width: 100%;
@@ -1954,7 +1955,41 @@
     });
 });
   </script>
-
+  
+  <script>
+    // Function to update active section in navigation
+    function updateActiveSection() {
+        // Get all sections
+        const sections = document.querySelectorAll('section[id], div[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        // Get current scroll position
+        const scrollPosition = window.scrollY;
+    
+        // Find the current section
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 100; // Offset by 100px to trigger slightly before the section
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove active class from all nav items
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active class to current section's nav item
+                const correspondingNavItem = document.querySelector(`.nav-item a[href="#${section.id}"]`).parentElement;
+                correspondingNavItem.classList.add('active');
+            }
+        });
+    }
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', updateActiveSection);
+    
+    // Call it once on load
+    document.addEventListener('DOMContentLoaded', updateActiveSection);
+    </script>
   
 
   <!-- Plotly Library -->
