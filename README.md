@@ -35,7 +35,7 @@ In this step, we focus on preparing the data for analysis. This involves cleanin
 
 - **Step 2:** Exploratory Data Analysis
 
-The goal is to get a better understanding of the behaviour of each characteristics across the periods. We examine the movie's features, such as their genres, languages, release season, ratings or box office performance. We analyze the distribution of these features and visualize them using various plots, such as histograms, bar charts, or scatter plots. This helps us to identify patterns, trends, or outliers in the data.
+The goal is to get a better understanding of the behaviour of each characteristics across the periods. We examine the movie's features, such as their genres, languages, release season, ratings or box office performance. We analyze the distribution of these features and visualize them using various plots, such as histograms and bar charts. This helps us to identify patterns and trends.
 
 - **Step 3:** Propensity Score Matching & Causal Inference
 
@@ -45,9 +45,9 @@ We use propensity score matching to compare the characteristics of movies that a
 
 We dive deeper into more advanced analyses by using machine learning algorithms to predict rating and box office performances based on movie features such as genre, langage, and country. Taking the best model, we perform feature importance analysis to identify the most influential factors in predicting the success of a movie. This helps us to identify the key drivers of movie success and understand how different factors influence a movie's performance.
 
-- **Step 5:** Generate plots and insights
+- **Step 5:** Reporting Results and Generating plots and insights
 
-We generate plots and visualizations to communicate our findings effectively. This includes creating charts, graphs, and tables that summarize the results of our analysis. We also provide insights and interpretations of the data, highlighting key trends, patterns, or relationships that we have identified. This step is crucial for presenting our findings in a clear and compelling way.
+We generate plots and visualizations to communicate our findings effectively. This includes creating charts and graphs that summarize the results of our analysis. We also provide insights and interpretations of the data, highlighting key trends, patterns, or relationships that we have identified. This step is crucial for presenting our findings in a clear and compelling way.
 
 - **Step 6:** Data Storytelling
 
